@@ -20,7 +20,7 @@ export function Hero({ title, subtitle, children, className, visual }: Props) {
         {title}
       </h1>
       {subtitle ? <p className="mt-4 text-xl text-pretty text-base leading-relaxed text-white">{subtitle}</p> : null}
-      {children ? <div className="mt-8 flex flex-wrap gap-3">{children}</div> : null}
+      {children ? <div className="mt-8 flex flex-col gap-3 sm:flex-row">{children}</div> : null}
     </>
   );
 

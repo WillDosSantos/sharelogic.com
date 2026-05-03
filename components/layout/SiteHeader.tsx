@@ -14,6 +14,19 @@ import { cn } from "@/lib/utils/cn";
 
 const dropdownTransition = { duration: 0.22, ease: EASE_IN_OUT as [number, number, number, number] };
 const mobilePanelTransition = { duration: 0.28, ease: EASE_IN_OUT as [number, number, number, number] };
+const mobileSidebarTransition = { duration: 0.24, ease: EASE_IN_OUT as [number, number, number, number] };
+
+function MenuIcon({ open }: { open: boolean }) {
+  return open ? (
+    <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" aria-hidden>
+      <path d="M6 6L18 18M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  ) : (
+    <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" aria-hidden>
+      <path d="M4 7H20M4 12H20M4 17H20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  );
+}
 
 export function SiteHeader() {
   const pathname = usePathname();
@@ -44,6 +57,15 @@ export function SiteHeader() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
+
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [mobileOpen]);
 
   function scheduleClose() {
     if (closeTimer.current) window.clearTimeout(closeTimer.current);
@@ -175,27 +197,50 @@ export function SiteHeader() {
 
         <button
           type="button"
-          className="inline-flex items-center justify-center rounded-full border border-white/30 bg-white/10 px-4 py-2 text-sm font-semibold text-white lg:hidden"
+          className="inline-flex items-center justify-center rounded-full border border-white/30 bg-white/10 p-2.5 text-white lg:hidden"
           aria-expanded={mobileOpen}
           aria-controls={`${baseId}-mobile`}
           onClick={() => setMobileOpen((v) => !v)}
         >
-          Menu
+          <MenuIcon open={mobileOpen} />
+          <span className="sr-only">{mobileOpen ? "Close menu" : "Open menu"}</span>
         </button>
       </div>
 
       <AnimatePresence>
         {mobileOpen ? (
-          <motion.div
-            key="mobile-nav"
-            id={`${baseId}-mobile`}
-            initial={{ opacity: 0, y: -12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            transition={mobilePanelTransition}
-            className={cn("overflow-hidden border-t border-white/10 bg-[#2750F5] lg:hidden")}
-          >
-            <div className="mx-auto max-w-6xl px-4 py-4 sm:px-6">
+          <>
+            <motion.button
+              key="mobile-backdrop"
+              type="button"
+              aria-label="Close navigation menu"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={mobilePanelTransition}
+              className="fixed inset-0 z-[60] bg-slate-950/45 lg:hidden"
+              onClick={closeNav}
+            />
+            <motion.aside
+              key="mobile-nav"
+              id={`${baseId}-mobile`}
+              initial={{ x: "-100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "-100%" }}
+              transition={mobileSidebarTransition}
+              className="fixed inset-y-0 left-0 z-[70] w-[min(86vw,22rem)] overflow-y-auto border-r border-white/20 bg-[#2750F5] px-4 py-4 sm:px-5 lg:hidden"
+            >
+              <div className="mb-4 flex items-center justify-between">
+                <Logo variant="onBrand" />
+                <button
+                  type="button"
+                  className="inline-flex items-center justify-center rounded-full border border-white/30 bg-white/10 p-2 text-white"
+                  onClick={closeNav}
+                  aria-label="Close menu"
+                >
+                  <MenuIcon open />
+                </button>
+              </div>
               <div className="space-y-2">
                 {mainNavigation.map((group) => {
                   if (!group.children?.length && group.href) {
@@ -204,7 +249,7 @@ export function SiteHeader() {
                         key={group.id}
                         href={group.href}
                         onClick={onNavigateClick}
-                        className="block rounded-full border border-white/20 px-4 py-3 text-sm font-semibold text-white hover:bg-white/10"
+                        className="block w-full rounded-full border border-white/20 px-4 py-3 text-sm font-semibold text-white hover:bg-white/10"
                       >
                         {group.label}
                       </Link>
@@ -271,7 +316,7 @@ export function SiteHeader() {
                 <Link
                   href="/news"
                   onClick={onNavigateClick}
-                  className="rounded-full border border-white/30 bg-white/10 px-4 py-2.5 text-center text-sm font-semibold text-white"
+                  className="w-full rounded-full border border-white/30 bg-white/10 px-4 py-2.5 text-center text-sm font-semibold text-white"
                 >
                   News
                 </Link>
@@ -279,8 +324,8 @@ export function SiteHeader() {
                   Talk with a specialist
                 </LinkButton>
               </div>
-            </div>
-          </motion.div>
+            </motion.aside>
+          </>
         ) : null}
       </AnimatePresence>
     </header>
