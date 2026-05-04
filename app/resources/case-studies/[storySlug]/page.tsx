@@ -57,8 +57,8 @@ export default async function CaseStudyDetailPage({ params }: Props) {
       <section className="border-t border-slate-200 bg-white">
         <Container className="py-12 sm:py-16">
           <div className="mx-auto max-w-4xl space-y-8">
-            <p className="text-2xl leading-relaxed text-slate-600">{story.impact}</p>
-            <p className="text-2xl leading-relaxed text-slate-600">{story.comparison}</p>
+            <p className="text-lg leading-relaxed text-slate-600 sm:text-xl">{story.impact}</p>
+            <p className="text-lg leading-relaxed text-slate-600 sm:text-xl">{story.comparison}</p>
           </div>
         </Container>
       </section>

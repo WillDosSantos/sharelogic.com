@@ -3,6 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import type { ComponentType, SVGProps } from "react";
+import { BoxiconExpand, BoxiconLayer, BoxiconServer, BoxiconShield } from "@/components/icons/IntegrityPlatformColumnIcons";
 import { Container } from "@/components/layout/Container";
 import { GridStreakOverlay } from "@/components/effects/GridStreakOverlay";
 import { FadeUp } from "@/components/motion/FadeUp";
@@ -13,6 +15,26 @@ const HERO_NAVY = "#2750F5";
 const HERO_ACCENT = "#2b59ff";
 const FINAL_CTA_BG = "#2750F5";
 const FINAL_CTA_BLUE = "#2e5bff";
+
+type IntegrityIconProps = SVGProps<SVGSVGElement> & { size?: number };
+
+const INTEGRITY_PLATFORM_COLUMNS: {
+  text: string;
+  Icon: ComponentType<IntegrityIconProps>;
+}[] = [
+  {
+    Icon: BoxiconServer,
+    text: "ServiceNow often becomes the operational backbone of the organisation. As more teams adopt the platform, the number of systems interacting with it grows.",
+  },
+  {
+    Icon: BoxiconLayer,
+    text: "Without clear governance, integrations can emerge organically as teams build tools, reports or small applications around the platform. Over time, ServiceNow can unintentionally become the integration layer for systems that were never formally designed to rely on it.",
+  },
+  {
+    Icon: BoxiconShield,
+    text: "Easy API helps platform owners maintain architectural control. By ensuring integrations are introduced through managed APIs, organisations can support innovation while protecting the integrity of the platform.",
+  },
+];
 
 type Props = {
   product: ProductPageContent;
@@ -366,9 +388,7 @@ export function EasyApiProductTemplate(_props: Props) {
                   className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/25 bg-white/5 text-white"
                   aria-hidden
                 >
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" className="shrink-0 text-amber-300" aria-hidden>
-                    <path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z" fill="currentColor" />
-                  </svg>
+                  <BoxiconExpand size={22} className="shrink-0 text-white" />
                 </span>
                 <h2 className="mt-6 text-3xl font-semibold tracking-tight sm:text-4xl">Built for Scale</h2>
               </FadeUp>
@@ -453,27 +473,14 @@ export function EasyApiProductTemplate(_props: Props) {
           <div className="mt-8 border-t border-slate-200" aria-hidden />
 
           <div className="mt-10 grid gap-10 md:grid-cols-3 md:gap-8 lg:gap-12">
-            {[
-              "ServiceNow often becomes the operational backbone of the organisation. As more teams adopt the platform, the number of systems interacting with it grows.",
-              "Without clear governance, integrations can emerge organically as teams build tools, reports or small applications around the platform. Over time, ServiceNow can unintentionally become the integration layer for systems that were never formally designed to rely on it.",
-              "Easy API helps platform owners maintain architectural control. By ensuring integrations are introduced through managed APIs, organisations can support innovation while protecting the integrity of the platform.",
-            ].map((text, index) => (
+            {INTEGRITY_PLATFORM_COLUMNS.map(({ text, Icon }, index) => (
               <FadeUp key={`integrity-${index}`} delay={index * 0.06}>
                 <div className="flex flex-col items-start text-left">
                   <span
-                    className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-slate-50 text-slate-900"
+                    className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-slate-50 text-slate-700"
                     aria-hidden
                   >
-                    <svg width="28" height="24" viewBox="0 0 28 24" fill="none" className="translate-x-0.5">
-                      <path
-                        d="M2 5h6M2 9h5M2 13h4"
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeWidth="1.35"
-                        className="text-slate-700"
-                      />
-                      <path d="M12 2l-1.5 6h4.5l-1.5 7.5 5.5-8h-3.5l1-6.5z" className="fill-amber-300" />
-                    </svg>
+                    <Icon size={26} className="shrink-0 text-current" />
                   </span>
                   <p className="mt-5 text-base leading-relaxed text-slate-700">{text}</p>
                 </div>

@@ -11,9 +11,11 @@ type Props = {
   className?: string;
   /** When set, hero is a single section with flex row: copy left (~50%), visual right (~50%) on large screens. */
   visual?: ReactNode;
+  /** Dot grid overlay on the blue background (default true). Home uses false for a cleaner hero. */
+  showBackgroundDots?: boolean;
 };
 
-export function Hero({ title, subtitle, children, className, visual }: Props) {
+export function Hero({ title, subtitle, children, className, visual, showBackgroundDots = true }: Props) {
   const copy = (
     <>
       <h1 className="text-balance text-4xl font-black tracking-tight text-white sm:text-5xl">
@@ -42,30 +44,34 @@ export function Hero({ title, subtitle, children, className, visual }: Props) {
             priority
           />
         </div>
-        <div className="absolute inset-y-0 left-0 z-[1] w-1/2">
-          <div className="relative h-full w-full">
-            <Image
-              src="/home/dots.svg"
-              alt=""
-              fill
-              className="object-cover object-left object-top max-w-100"
-              sizes="50vw"
-              priority
-            />
-          </div>
-        </div>
-        <div className="absolute inset-y-0 right-0 z-[1] w-1/2">
-          <div className="relative h-full w-full">
-            <Image
-              src="/home/dots.svg"
-              alt=""
-              fill
-              className="object-cover object-right object-top max-w-100"
-              sizes="50vw"
-              priority
-            />
-          </div>
-        </div>
+        {showBackgroundDots ? (
+          <>
+            <div className="absolute inset-y-0 left-0 z-[1] w-1/2">
+              <div className="relative h-full w-full">
+                <Image
+                  src="/home/dots.svg"
+                  alt=""
+                  fill
+                  className="object-cover object-left object-top max-w-100"
+                  sizes="50vw"
+                  priority
+                />
+              </div>
+            </div>
+            <div className="absolute inset-y-0 right-0 z-[1] w-1/2">
+              <div className="relative h-full w-full">
+                <Image
+                  src="/home/dots.svg"
+                  alt=""
+                  fill
+                  className="object-cover object-right object-top max-w-100"
+                  sizes="50vw"
+                  priority
+                />
+              </div>
+            </div>
+          </>
+        ) : null}
       </div>
       <Container className="relative z-10 w-full py-16 sm:py-20 lg:py-24 xl:py-28">
         {visual ? (

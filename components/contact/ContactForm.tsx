@@ -176,9 +176,6 @@ export function ContactForm() {
         >
           Submit inquiry
         </motion.button>
-        <p className="text-xs text-slate-500">
-          This form is frontend-only for now—wire it to your CRM or email service when ready.
-        </p>
       </div>
 
       {submitted ? (
