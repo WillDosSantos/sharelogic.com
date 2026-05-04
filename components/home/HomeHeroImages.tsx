@@ -11,7 +11,7 @@ const HERO_LAYERS = [
     src: "/home/hero/graph.png",
     alt: "",
     boxClass:
-      "pointer-events-none absolute left-0 bottom-[20%] z-[20] h-[22%] w-[46%] sm:top-[22%] sm:h-[34%] sm:w-[60%]",
+      "pointer-events-none absolute left-[-20%] bottom-[20%] z-[20] h-[22%] w-[46%] sm:top-[22%] sm:h-[34%] sm:w-[60%]",
   },
   {
     key: "color-graph",
