@@ -29,6 +29,7 @@ export default function HomePage() {
         title="Smarter ServiceNow Integrations"
         subtitle="Governance, visibility, and control for ServiceNow integrations that matter"
         visual={<HomeHeroArtboard />}
+        showBackgroundDots={false}
       >
         <LinkButton href="/contact" hero>
           Talk to an Integration Specialist

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { HomeSectionFollow } from "@/components/home/HomeSectionFollow";
 import { Container } from "@/components/layout/Container";
+import { FadeUp } from "@/components/motion/FadeUp";
 import { CASE_STUDY_IMAGE_BY_ID, getCaseStudyStoryCopy } from "@/lib/data/caseStudies";
 import type { ResourceItem } from "@/lib/types/content";
 
@@ -27,27 +28,37 @@ export function CaseStudiesLanding({ items }: Props) {
 
           <div className="mt-12 grid gap-3 md:grid-cols-3">
             <div className="grid gap-3">
-              <div className="flex min-h-28 flex-col justify-center rounded-2xl bg-amber-300 px-8 py-6">
-                <p className="text-5xl font-semibold tracking-tight text-slate-950">100+</p>
-                <p className="mt-1 text-xl font-medium text-slate-900">Customer Satisfaction</p>
-              </div>
-              <div className="relative aspect-[16/12] overflow-hidden rounded-2xl bg-slate-100">
-                <Image src={HERO_IMAGES[0]} alt="" fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" unoptimized />
-              </div>
+              <FadeUp delay={0.05}>
+                <div className="flex min-h-28 flex-col justify-center rounded-2xl bg-amber-300 px-8 py-6">
+                  <p className="text-5xl font-semibold tracking-tight text-slate-950">100+</p>
+                  <p className="mt-1 text-xl font-medium text-slate-900">Customer Satisfaction</p>
+                </div>
+              </FadeUp>
+              <FadeUp delay={0.15}>
+                <div className="relative aspect-[16/12] overflow-hidden rounded-2xl bg-slate-100">
+                  <Image src={HERO_IMAGES[0]} alt="" fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" unoptimized />
+                </div>
+              </FadeUp>
             </div>
 
-            <div className="relative aspect-[16/20] overflow-hidden rounded-2xl bg-slate-100">
-              <Image src={HERO_IMAGES[1]} alt="" fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" unoptimized />
-            </div>
+            <FadeUp delay={0.25}>
+              <div className="relative aspect-[16/20] overflow-hidden rounded-2xl bg-slate-100">
+                <Image src={HERO_IMAGES[1]} alt="" fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" unoptimized />
+              </div>
+            </FadeUp>
 
             <div className="grid gap-3">
-              <div className="relative aspect-[16/12] overflow-hidden rounded-2xl bg-slate-100">
-                <Image src={HERO_IMAGES[2]} alt="" fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" unoptimized />
-              </div>
-              <div className="flex min-h-28 flex-col justify-center rounded-2xl bg-blue-600 px-8 py-6">
-                <p className="text-5xl font-semibold tracking-tight text-white">100+</p>
-                <p className="mt-1 text-xl font-medium text-white">Customer Satisfaction</p>
-              </div>
+              <FadeUp delay={0.35}>
+                <div className="relative aspect-[16/12] overflow-hidden rounded-2xl bg-slate-100">
+                  <Image src={HERO_IMAGES[2]} alt="" fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" unoptimized />
+                </div>
+              </FadeUp>
+              <FadeUp delay={0.45}>
+                <div className="flex min-h-28 flex-col justify-center rounded-2xl bg-blue-600 px-8 py-6">
+                  <p className="text-5xl font-semibold tracking-tight text-white">100+</p>
+                  <p className="mt-1 text-xl font-medium text-white">Customer Satisfaction</p>
+                </div>
+              </FadeUp>
             </div>
           </div>
         </Container>
@@ -68,7 +79,7 @@ export function CaseStudiesLanding({ items }: Props) {
                       <h2 className="max-w-xl text-4xl font-semibold tracking-tight text-slate-950">{item.title}</h2>
                     </div>
                     <div className={imageLeft ? "lg:col-span-6 lg:order-1" : "lg:col-span-6"}>
-                      <p className="text-2xl leading-relaxed text-slate-600">{story.summary}</p>
+                      <p className="text-lg leading-relaxed text-slate-600 sm:text-xl">{story.summary}</p>
                     </div>
                   </div>
 
@@ -80,8 +91,8 @@ export function CaseStudiesLanding({ items }: Props) {
                     </div>
                     <div className={imageLeft ? "lg:col-span-6 lg:order-1" : "lg:col-span-6"}>
                       <div className="space-y-7">
-                        <p className="text-2xl leading-relaxed text-slate-600">{story.impact}</p>
-                        <p className="text-2xl leading-relaxed text-slate-600">{story.comparison}</p>
+                        <p className="text-lg leading-relaxed text-slate-600 sm:text-xl">{story.impact}</p>
+                        <p className="text-lg leading-relaxed text-slate-600 sm:text-xl">{story.comparison}</p>
                       </div>
                     </div>
                   </div>
@@ -89,7 +100,7 @@ export function CaseStudiesLanding({ items }: Props) {
                   <div className="mt-10 flex justify-end">
                     <Link
                       href={`/resources/case-studies/${item.slug}`}
-                      className="inline-flex items-center rounded-full border-2 border-blue-500 px-5 py-2 text-base font-semibold text-blue-600 transition hover:bg-blue-50"
+                      className="inline-flex items-center rounded-full border-2 border-blue-500 px-4 py-1.5 text-sm font-semibold text-blue-600 transition hover:bg-blue-50"
                     >
                       Learn more about this story
                     </Link>

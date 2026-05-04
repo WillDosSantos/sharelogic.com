@@ -197,7 +197,7 @@ export function UnifiProductTemplate({ product }: Props) {
                   alt=""
                   width={270}
                   height={267}
-                  className="absolute left-[80px] top-[-100px] z-10 h-auto max-w-[200px] object-contain"
+                  className="absolute left-[80px] top-[-410px] z-10 h-auto max-w-[200px] object-contain"
                 />
               </div>
             </FadeUp>

@@ -230,27 +230,17 @@ export function SiteHeader() {
               transition={mobileSidebarTransition}
               className="fixed inset-y-0 left-0 z-[70] w-[min(86vw,22rem)] overflow-y-auto border-r border-white/20 bg-[#2750F5] px-4 py-4 sm:px-5 lg:hidden"
             >
-              <div className="mb-4 flex items-center justify-between">
+              <div className="mb-6">
                 <Logo variant="onBrand" />
-                <button
-                  type="button"
-                  className="inline-flex items-center justify-center rounded-full border border-white/30 bg-white/10 p-2 text-white"
-                  onClick={closeNav}
-                  aria-label="Close menu"
-                >
-                  <MenuIcon open />
-                </button>
               </div>
-              <div className="space-y-2">
+              <nav className="flex flex-col gap-1" aria-label="Primary mobile">
                 {mainNavigation.map((group) => {
+                  const linkUnderline =
+                    "block w-full py-3 text-left text-sm font-semibold text-white underline decoration-white/45 underline-offset-[6px] hover:decoration-white";
+
                   if (!group.children?.length && group.href) {
                     return (
-                      <Link
-                        key={group.id}
-                        href={group.href}
-                        onClick={onNavigateClick}
-                        className="block w-full rounded-full border border-white/20 px-4 py-3 text-sm font-semibold text-white hover:bg-white/10"
-                      >
+                      <Link key={group.id} href={group.href} onClick={onNavigateClick} className={linkUnderline}>
                         {group.label}
                       </Link>
                     );
@@ -258,17 +248,14 @@ export function SiteHeader() {
 
                   const expanded = openGroupId === `m-${group.id}`;
                   return (
-                    <div key={group.id} className="rounded-lg border border-white/20 bg-white/5">
+                    <div key={group.id} className="border-b border-white/15 pb-1 last:border-b-0">
                       <button
                         type="button"
-                        className="flex w-full items-center justify-between px-4 py-3 text-left text-sm font-semibold text-white"
+                        className={cn(linkUnderline, "bg-transparent")}
                         aria-expanded={expanded}
                         onClick={() => setOpenGroupId(expanded ? null : `m-${group.id}`)}
                       >
                         {group.label}
-                        <span className="text-white/70" aria-hidden>
-                          {expanded ? "▴" : "▾"}
-                        </span>
                       </button>
                       <AnimatePresence initial={false}>
                         {expanded ? (
@@ -278,48 +265,29 @@ export function SiteHeader() {
                             animate={{ opacity: 1, height: "auto" }}
                             exit={{ opacity: 0, height: 0 }}
                             transition={dropdownTransition}
-                            className={cn("border-t border-white/10 bg-[#2750F5]")}
+                            className="overflow-hidden"
                           >
-                            <div className="px-2 py-2">
-                              <ul className="space-y-1">
-                                {group.children?.map((child) => (
-                                  <li key={child.href}>
-                                    <Link
-                                      href={child.href}
-                                      onClick={onNavigateClick}
-                                      className="flex items-center gap-3 rounded-full px-3 py-2 text-sm text-white hover:bg-white/10"
-                                    >
-                                      {child.icon ? (
-                                        <Image
-                                          src={child.icon}
-                                          alt=""
-                                          width={24}
-                                          height={24}
-                                          aria-hidden
-                                          className="h-7 w-7 shrink-0"
-                                        />
-                                      ) : null}
-                                      <span>{child.label}</span>
-                                    </Link>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
+                            <ul className="mt-1 space-y-1 border-l border-white/20 pl-3">
+                              {group.children?.map((child) => (
+                                <li key={child.href}>
+                                  <Link
+                                    href={child.href}
+                                    onClick={onNavigateClick}
+                                    className="block py-2 text-sm font-medium text-white/90 underline decoration-white/35 underline-offset-[5px] hover:text-white hover:decoration-white"
+                                  >
+                                    {child.label}
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
                           </motion.div>
                         ) : null}
                       </AnimatePresence>
                     </div>
                   );
                 })}
-              </div>
-              <div className="mt-4 flex flex-col gap-2">
-                <Link
-                  href="/news"
-                  onClick={onNavigateClick}
-                  className="w-full rounded-full border border-white/30 bg-white/10 px-4 py-2.5 text-center text-sm font-semibold text-white"
-                >
-                  News
-                </Link>
+              </nav>
+              <div className="mt-6 border-t border-white/15 pt-4">
                 <LinkButton href="/contact" variant="nav" className="w-full" onClick={closeNav}>
                   Talk with a specialist
                 </LinkButton>
