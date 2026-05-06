@@ -1,4 +1,18 @@
 import type { ResourceCategory, ResourceCategoryMeta, ResourceItem } from "@/lib/types/content";
+import { loadCaseStudies } from "@/lib/case-studies/loadCaseStudies";
+
+function caseStudyDocToResourceItem(d: ReturnType<typeof loadCaseStudies>[number]): ResourceItem {
+  return {
+    id: d.id,
+    slug: d.slug,
+    category: d.category,
+    title: d.title,
+    excerpt: d.excerpt,
+    tags: d.tags,
+    publishedAt: d.publishedAt,
+    readTimeMinutes: d.readTimeMinutes,
+  };
+}
 
 export const resourceCategories: ResourceCategoryMeta[] = [
   {
@@ -54,28 +68,7 @@ export const resourceCategories: ResourceCategoryMeta[] = [
 ];
 
 export const resourceItems: ResourceItem[] = [
-  {
-    id: "r-001",
-    slug: "global-bank-unifies-service-operations",
-    category: "case-studies",
-    title: "Global bank unifies service operations across ITSM and monitoring",
-    excerpt:
-      "How a top-tier bank reduced incident noise and improved change confidence by standardizing integration patterns.",
-    tags: ["ITSM", "Observability", "Governance"],
-    publishedAt: "2025-11-12",
-    readTimeMinutes: 8,
-  },
-  {
-    id: "r-002",
-    slug: "manufacturer-cuts-reconciliation-time",
-    category: "case-studies",
-    title: "Manufacturer cuts cross-system reconciliation time by 37%",
-    excerpt:
-      "A phased approach to master data and workflow orchestration across ERP, MES, and supplier portals.",
-    tags: ["Manufacturing", "MDM", "Orchestration"],
-    publishedAt: "2025-10-02",
-    readTimeMinutes: 7,
-  },
+  ...loadCaseStudies().map(caseStudyDocToResourceItem),
   {
     id: "r-003",
     slug: "integration-as-a-product",
@@ -163,17 +156,6 @@ export const resourceItems: ResourceItem[] = [
     tags: ["Change management"],
     publishedAt: "2025-03-14",
     readTimeMinutes: 7,
-  },
-  {
-    id: "r-011",
-    slug: "healthcare-interoperability-without-chaos",
-    category: "case-studies",
-    title: "Healthcare interoperability without operational chaos",
-    excerpt:
-      "How a regional network standardized interfaces while respecting privacy and clinical workflows.",
-    tags: ["Healthcare", "Interoperability"],
-    publishedAt: "2025-02-27",
-    readTimeMinutes: 9,
   },
   {
     id: "r-012",

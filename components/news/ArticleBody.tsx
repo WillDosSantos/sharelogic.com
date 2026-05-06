@@ -1,76 +1,40 @@
-import type { ReactNode } from "react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 type Props = {
   content: string;
 };
 
 export function ArticleBody({ content }: Props) {
-  const lines = content.trim().split("\n");
-  const blocks: ReactNode[] = [];
-  let listItems: string[] = [];
-  let key = 0;
-
-  function flushList() {
-    if (!listItems.length) return;
-    blocks.push(
-      <ul key={`ul-${key++}`} className="my-4 list-disc space-y-2 pl-5 text-slate-700">
-        {listItems.map((item) => (
-          <li key={item}>{item}</li>
-        ))}
-      </ul>,
-    );
-    listItems = [];
-  }
-
-  for (const rawLine of lines) {
-    const line = rawLine.trimEnd();
-    const t = line.trim();
-
-    if (t === "") {
-      flushList();
-      continue;
-    }
-
-    if (t === "---") {
-      flushList();
-      blocks.push(<hr key={`hr-${key++}`} className="my-8 border-slate-200" />);
-      continue;
-    }
-
-    if (t.startsWith("## ")) {
-      flushList();
-      blocks.push(
-        <h2 key={`h2-${key++}`} className="mt-10 scroll-mt-28 text-xl font-semibold tracking-tight text-slate-900 first:mt-0">
-          {t.slice(3)}
-        </h2>,
-      );
-      continue;
-    }
-
-    if (t.startsWith("### ")) {
-      flushList();
-      blocks.push(
-        <h3 key={`h3-${key++}`} className="mt-8 text-lg font-semibold text-slate-900">
-          {t.slice(4)}
-        </h3>,
-      );
-      continue;
-    }
-
-    if (t.startsWith("- ")) {
-      listItems.push(t.slice(2));
-      continue;
-    }
-
-    flushList();
-    blocks.push(
-      <p key={`p-${key++}`} className="mt-4 text-base leading-relaxed text-slate-700">
-        {t}
-      </p>,
-    );
-  }
-
-  flushList();
-
-  return <div className="prose-custom">{blocks}</div>;
+  return (
+    <div className="prose-custom">
+      <ReactMarkdown
+        remarkPlugins={[remarkGfm]}
+        components={{
+          hr: () => <hr className="my-8 border-slate-200" />,
+          h2: ({ children }) => (
+            <h2 className="mt-10 scroll-mt-28 text-xl font-semibold tracking-tight text-slate-900 first:mt-0">{children}</h2>
+          ),
+          h3: ({ children }) => <h3 className="mt-8 text-lg font-semibold text-slate-900">{children}</h3>,
+          p: ({ children }) => <p className="mt-4 text-base leading-relaxed text-slate-700 first:mt-0">{children}</p>,
+          ul: ({ children }) => <ul className="my-4 list-disc space-y-2 pl-5 text-slate-700">{children}</ul>,
+          ol: ({ children }) => (
+            <ol className="my-4 list-decimal space-y-2 pl-5 text-slate-700">{children}</ol>
+          ),
+          li: ({ children }) => <li className="text-base leading-relaxed">{children}</li>,
+          strong: ({ children }) => <strong className="font-semibold text-slate-900">{children}</strong>,
+          a: ({ href, children }) => (
+            <a
+              href={href}
+              className="font-semibold text-blue-600 underline decoration-blue-600/30 underline-offset-2 hover:text-blue-700 hover:decoration-blue-700"
+            >
+              {children}
+            </a>
+          ),
+        }}
+      >
+        {content.trim()}
+      </ReactMarkdown>
+    </div>
+  );
 }

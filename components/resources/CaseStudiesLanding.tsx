@@ -3,7 +3,7 @@ import Link from "next/link";
 import { HomeSectionFollow } from "@/components/home/HomeSectionFollow";
 import { Container } from "@/components/layout/Container";
 import { FadeUp } from "@/components/motion/FadeUp";
-import { CASE_STUDY_IMAGE_BY_ID, getCaseStudyStoryCopy } from "@/lib/data/caseStudies";
+import { getCaseStudyFeaturedImage, getCaseStudyStoryCopy } from "@/lib/data/caseStudies";
 import type { ResourceItem } from "@/lib/types/content";
 
 type Props = {
@@ -69,7 +69,7 @@ export function CaseStudiesLanding({ items }: Props) {
           <div className="space-y-14 sm:space-y-16">
             {items.map((item, index) => {
               const story = getCaseStudyStoryCopy(item.id);
-              const imageSrc = CASE_STUDY_IMAGE_BY_ID[item.id] ?? HERO_IMAGES[index % HERO_IMAGES.length];
+              const imageSrc = getCaseStudyFeaturedImage(item.id);
               const imageLeft = index % 2 === 1;
 
               return (

@@ -5,7 +5,8 @@ import { ArticleBody } from "@/components/news/ArticleBody";
 import { SharePostCta } from "@/components/news/SharePostCta";
 import { Container } from "@/components/layout/Container";
 import { TagPill } from "@/components/ui/TagPill";
-import { getPostBySlug, getRelatedPosts, newsPosts, newsTopics } from "@/lib/data/news";
+import { getPostBySlug, getRelatedPosts, newsPosts } from "@/lib/data/news";
+import { newsTopics } from "@/lib/data/newsTopics";
 import { siteConfig } from "@/lib/data/site";
 import { buildMetadata } from "@/lib/utils/metadata";
 
