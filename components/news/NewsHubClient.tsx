@@ -8,7 +8,7 @@ import { ArticleCard } from "@/components/ui/ArticleCard";
 import { EmptyState } from "@/components/ui/EmptyState";
 import { Pagination } from "@/components/ui/Pagination";
 import type { NewsPost, NewsTopic } from "@/lib/types/content";
-import { newsTopics } from "@/lib/data/news";
+import { newsTopics } from "@/lib/data/newsTopics";
 import { cn } from "@/lib/utils/cn";
 
 const PAGE_SIZE = 6;
