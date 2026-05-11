@@ -3,6 +3,8 @@ import Link from "next/link";
 import { HomeSectionFollow } from "@/components/home/HomeSectionFollow";
 import { Container } from "@/components/layout/Container";
 import { FadeUp } from "@/components/motion/FadeUp";
+import { sectionHeadingH2 } from "@/lib/section-heading";
+import { cn } from "@/lib/utils/cn";
 import { buildMetadata } from "@/lib/utils/metadata";
 
 export const metadata = buildMetadata({
@@ -59,33 +61,30 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      <section className="relative overflow-hidden border-b border-slate-200 bg-[#1F53FF]">
-        <div
-          className="pointer-events-none absolute inset-0 opacity-30"
-          aria-hidden
-          style={{ backgroundImage: "url('/about/bg-pattern.png')" }}
-        />
-        <Container className="relative z-10 py-8 sm:py-10 lg:py-12">
+      <section className="border-b border-slate-200 bg-white">
+        <Container className="py-8 sm:py-10 lg:py-12">
           <div className="grid items-center gap-8 lg:grid-cols-12 lg:gap-10">
             <FadeUp className="lg:col-span-4">
-              <h2 className="max-w-xl text-xl font-semibold leading-tight tracking-tight text-white sm:text-2xl">
+              <h2 className={cn(sectionHeadingH2, "max-w-xl text-slate-900")}>
                 ShareLogic, the journey to creating the globally recognised ebonding integration platform
               </h2>
-              <p className="mt-4 max-w-xl text-base leading-relaxed text-blue-100 sm:text-lg">
+              <p className="mt-4 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg">
                 ShareLogic Unifi was developed to excel at one thing: ebonding within ServiceNow. Our platform transforms the
                 capabilities of companies to create and manage powerful, sophisticated, and flexible integrations, quickly and
                 at scale.
               </p>
             </FadeUp>
             <FadeUp delay={0.08} className="relative mx-auto flex w-full max-w-3xl justify-center lg:col-span-8 lg:justify-end">
-              <Image
-                src="/about/img-platform.png"
-                alt="ShareLogic integration platform illustration"
-                width={900}
-                height={640}
-                className="h-auto w-full max-h-[min(340px,50vh)] object-contain sm:max-h-[min(420px,58vh)] lg:max-h-[min(520px,64vh)]"
-                unoptimized
-              />
+              <div className="w-full overflow-hidden rounded-2xl bg-[#1F53FF] p-6 shadow-[0_20px_50px_-12px_rgba(31,83,255,0.35)] sm:rounded-3xl sm:p-8 lg:max-w-none lg:p-10">
+                <Image
+                  src="/about/img-platform.png"
+                  alt="ShareLogic integration platform illustration"
+                  width={900}
+                  height={640}
+                  className="h-auto w-full max-h-[min(340px,50vh)] object-contain sm:max-h-[min(420px,58vh)] lg:max-h-[min(520px,64vh)]"
+                  unoptimized
+                />
+              </div>
             </FadeUp>
           </div>
         </Container>
@@ -95,7 +94,7 @@ export default function AboutPage() {
         <Container className="py-14 sm:py-16 lg:py-20">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-start">
             <FadeUp className="lg:col-span-6">
-              <h2 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">Our Founders Story</h2>
+              <h2 className={cn(sectionHeadingH2, "text-slate-900")}>Our Founders Story</h2>
               <p className="mt-5 max-w-xl text-lg leading-relaxed text-slate-600">
                 ShareLogic was founded by two industry veterans who saw a gap in the market for a platform that could simplify
                 the complex world of enterprise integrations. With decades of combined experience, they set out to build a
@@ -223,7 +222,7 @@ export default function AboutPage() {
         <Container className="relative z-10 py-14 sm:py-16 lg:py-20">
           <div className="grid items-center gap-12 lg:grid-cols-12">
             <FadeUp className="lg:col-span-6">
-              <h2 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">Want to join our team?</h2>
+              <h2 className={cn(sectionHeadingH2, "text-slate-900")}>Want to join our team?</h2>
               <p className="mt-5 max-w-xl text-lg leading-relaxed text-slate-700">
                 Joining ShareLogic is an exciting chance to be part of an innovative team. Here, collaboration is essential, and
                 every member contributes to our future. We embrace new ideas and technologies that propel our mission. At

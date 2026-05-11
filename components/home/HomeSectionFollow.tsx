@@ -1,5 +1,7 @@
 import Image from "next/image";
 import { Container } from "@/components/layout/Container";
+import { sectionHeadingH2 } from "@/lib/section-heading";
+import { cn } from "@/lib/utils/cn";
 import { HomeFollowLeadForm } from "@/components/home/HomeFollowLeadForm";
 
 export function HomeSectionFollow() {
@@ -38,7 +40,7 @@ export function HomeSectionFollow() {
 
       <Container className="relative z-10 py-8 sm:py-10 lg:py-12">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 id="section-follow-heading" className="text-2xl font-semibold tracking-tight text-black sm:text-3xl">
+          <h2 id="section-follow-heading" className={cn(sectionHeadingH2, "text-black")}>
             Let&apos;s talk about your integrations
           </h2>
           <p className="mt-3 text-pretty text-base leading-relaxed text-[#666666]">

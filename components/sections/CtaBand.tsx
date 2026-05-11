@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { FadeUp } from "@/components/motion/FadeUp";
 import { Container } from "@/components/layout/Container";
+import { sectionHeadingH2 } from "@/lib/section-heading";
 import { cn } from "@/lib/utils/cn";
 
 type Props = {
@@ -27,7 +28,7 @@ export function CtaBand({
       <Container className="py-14 sm:py-16">
         <div className="flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
           <FadeUp className="max-w-2xl">
-            <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">{headline}</h2>
+            <h2 className={cn(sectionHeadingH2, "text-white")}>{headline}</h2>
             <p className="mt-3 text-pretty text-base leading-relaxed text-slate-200">{body}</p>
           </FadeUp>
           <FadeUp delay={0.1} className="flex flex-col gap-3 sm:flex-row sm:items-center">

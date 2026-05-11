@@ -148,11 +148,15 @@ export function SiteHeader() {
                         <ul className="max-h-[70vh] overflow-auto py-1">
                           {group.children?.map((child) => {
                             const active = activeHref === child.href;
+                            const external = /^https?:\/\//i.test(child.href);
                             return (
-                              <li key={child.href}>
+                              <li key={`${group.id}-${child.label}`}>
                                 <Link
                                   role="menuitem"
                                   href={child.href}
+                                  {...(external
+                                    ? { target: "_blank", rel: "noopener noreferrer" }
+                                    : {})}
                                   onClick={onNavigateClick}
                                   className={cn(
                                     "flex items-center gap-3 rounded-lg px-3 py-2 text-sm hover:bg-slate-50",
@@ -170,7 +174,17 @@ export function SiteHeader() {
                                     />
                                   ) : null}
                                   <span className="min-w-0">
-                                    <span className="font-medium text-slate-900">{child.label}</span>
+                                    <span className="font-medium text-slate-900">
+                                      {child.label}
+                                      {external ? (
+                                        <>
+                                          <span className="ml-1 text-slate-400" aria-hidden>
+                                            ↗
+                                          </span>
+                                          <span className="sr-only"> (opens in new tab)</span>
+                                        </>
+                                      ) : null}
+                                    </span>
                                     {child.description ? (
                                       <span className="mt-1 block text-xs text-slate-600">{child.description}</span>
                                     ) : null}
@@ -268,17 +282,31 @@ export function SiteHeader() {
                             className="overflow-hidden"
                           >
                             <ul className="mt-1 space-y-1 border-l border-white/20 pl-3">
-                              {group.children?.map((child) => (
-                                <li key={child.href}>
-                                  <Link
-                                    href={child.href}
-                                    onClick={onNavigateClick}
-                                    className="block py-2 text-sm font-medium text-white/90 underline decoration-white/35 underline-offset-[5px] hover:text-white hover:decoration-white"
-                                  >
-                                    {child.label}
-                                  </Link>
-                                </li>
-                              ))}
+                              {group.children?.map((child) => {
+                                const external = /^https?:\/\//i.test(child.href);
+                                return (
+                                  <li key={`${group.id}-${child.label}`}>
+                                    <Link
+                                      href={child.href}
+                                      {...(external
+                                        ? { target: "_blank", rel: "noopener noreferrer" }
+                                        : {})}
+                                      onClick={onNavigateClick}
+                                      className="block py-2 text-sm font-medium text-white/90 underline decoration-white/35 underline-offset-[5px] hover:text-white hover:decoration-white"
+                                    >
+                                      {child.label}
+                                      {external ? (
+                                        <>
+                                          <span className="ml-1 inline-block text-white/60" aria-hidden>
+                                            ↗
+                                          </span>
+                                          <span className="sr-only"> (opens in new tab)</span>
+                                        </>
+                                      ) : null}
+                                    </Link>
+                                  </li>
+                                );
+                              })}
                             </ul>
                           </motion.div>
                         ) : null}

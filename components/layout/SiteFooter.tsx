@@ -67,13 +67,21 @@ export function SiteFooter() {
                 <p className="text-xs font-semibold uppercase tracking-wide text-white/55">{group.label}</p>
                 {group.children?.length ? (
                   <ul className="mt-3 space-y-2">
-                    {group.children.map((child) => (
-                      <li key={child.href}>
-                        <Link href={child.href} className="text-sm text-white/90 hover:text-white">
-                          {child.label}
-                        </Link>
-                      </li>
-                    ))}
+                    {group.children.map((child) => {
+                      const external = /^https?:\/\//i.test(child.href);
+                      return (
+                        <li key={`${group.id}-${child.label}`}>
+                          <Link
+                            href={child.href}
+                            {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                            className="text-sm text-white/90 hover:text-white"
+                          >
+                            {child.label}
+                            {external ? <span className="sr-only"> (opens in new tab)</span> : null}
+                          </Link>
+                        </li>
+                      );
+                    })}
                   </ul>
                 ) : group.href ? (
                   <ul className="mt-3 space-y-2">

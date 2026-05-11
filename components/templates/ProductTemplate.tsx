@@ -5,6 +5,8 @@ import { SectionIntro } from "@/components/sections/SectionIntro";
 import { ContentCard } from "@/components/ui/ContentCard";
 import { LinkButton } from "@/components/ui/LinkButton";
 import type { ProductPageContent } from "@/lib/types/content";
+import { sectionHeadingH2 } from "@/lib/section-heading";
+import { cn } from "@/lib/utils/cn";
 
 type Props = {
   product: ProductPageContent;
@@ -33,11 +35,11 @@ export function ProductTemplate({ product }: Props) {
         <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-14 lg:px-8">
           <div className="grid gap-8 lg:grid-cols-2">
             <div className="rounded-xl border border-slate-200 bg-slate-50/60 p-6">
-              <h2 className="text-lg font-semibold text-slate-900">{product.problem.title}</h2>
+              <h2 className={cn(sectionHeadingH2, "text-slate-900")}>{product.problem.title}</h2>
               <p className="mt-3 text-sm leading-relaxed text-slate-600">{product.problem.body}</p>
             </div>
             <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
-              <h2 className="text-lg font-semibold text-slate-900">{product.solution.title}</h2>
+              <h2 className={cn(sectionHeadingH2, "text-slate-900")}>{product.solution.title}</h2>
               <p className="mt-3 text-sm leading-relaxed text-slate-600">{product.solution.body}</p>
             </div>
           </div>
@@ -46,7 +48,7 @@ export function ProductTemplate({ product }: Props) {
 
       <section className="border-t border-slate-200 bg-slate-50/60">
         <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-14 lg:px-8">
-          <h2 className="text-2xl font-semibold tracking-tight text-slate-900">Supporting capabilities</h2>
+          <h2 className={cn(sectionHeadingH2, "text-slate-900")}>Supporting capabilities</h2>
           <div className="mt-8 grid gap-6 md:grid-cols-3">
             {product.supportingCards.map((c) => (
               <ContentCard key={c.title} title={c.title} description={c.description} />

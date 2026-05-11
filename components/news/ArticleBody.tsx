@@ -1,5 +1,7 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { sectionHeadingH2 } from "@/lib/section-heading";
+import { cn } from "@/lib/utils/cn";
 
 type Props = {
   content: string;
@@ -13,7 +15,7 @@ export function ArticleBody({ content }: Props) {
         components={{
           hr: () => <hr className="my-8 border-slate-200" />,
           h2: ({ children }) => (
-            <h2 className="mt-10 scroll-mt-28 text-xl font-semibold tracking-tight text-slate-900 first:mt-0">{children}</h2>
+            <h2 className={cn(sectionHeadingH2, "mt-10 scroll-mt-28 text-slate-900 first:mt-0")}>{children}</h2>
           ),
           h3: ({ children }) => <h3 className="mt-8 text-lg font-semibold text-slate-900">{children}</h3>,
           p: ({ children }) => <p className="mt-4 text-base leading-relaxed text-slate-700 first:mt-0">{children}</p>,

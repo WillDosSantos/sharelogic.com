@@ -8,6 +8,8 @@ import { TagPill } from "@/components/ui/TagPill";
 import { getPostBySlug, getRelatedPosts, newsPosts } from "@/lib/data/news";
 import { newsTopics } from "@/lib/data/newsTopics";
 import { siteConfig } from "@/lib/data/site";
+import { sectionHeadingH2 } from "@/lib/section-heading";
+import { cn } from "@/lib/utils/cn";
 import { buildMetadata } from "@/lib/utils/metadata";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -96,7 +98,7 @@ export default async function NewsPostPage({ params }: Props) {
             unoptimized
           />
           <p className="text-sm font-semibold text-blue-600">See more</p>
-          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-slate-900">Latest Articles</h2>
+          <h2 className={cn(sectionHeadingH2, "mt-3 text-slate-900")}>Latest Articles</h2>
           <p className="mt-2 text-lg text-slate-600">See other articles that may be interesting to you!</p>
           <div className="mt-8 grid gap-6 md:grid-cols-3">
             {related.map((r) => (

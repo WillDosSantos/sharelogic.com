@@ -3,20 +3,19 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { GridStreakOverlay } from "@/components/effects/GridStreakOverlay";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { Container } from "@/components/layout/Container";
 import { FadeUp } from "@/components/motion/FadeUp";
 import { BUTTON_MOTION } from "@/lib/motion/button";
+import { sectionHeadingH2 } from "@/lib/section-heading";
+import { cn } from "@/lib/utils/cn";
 import { HomeSectionFollow } from "@/components/home/HomeSectionFollow";
 import type { ProductPageContent } from "@/lib/types/content";
 
 const HERO_BG = "#2D5BFF";
-
-const BULLETS = [
-  { lead: "Standardize", rest: " how integrations are built" },
-  { lead: "Enforce policy", rest: " without slowing delivery" },
-  { lead: "Gain visibility", rest: " across every ServiceNow environment" },
-];
+/** Same base blue as the Easy API product hero (`HERO_NAVY` there). */
+const HERO_NAVY = "#2750F5";
 
 const REALITY_BULLETS = [
   "Each partner builds integrations differently",
@@ -138,117 +137,84 @@ type Props = {
 export function UnifiProductTemplate({ product }: Props) {
   return (
     <>
-      <section className="border-b border-white/10 text-white" style={{ backgroundColor: HERO_BG }}>
-        <Container className="py-12 sm:py-16 lg:py-20">
-          <div className="flex flex-col items-center text-center">
-            <FadeUp className="relative mb-6 inline-flex items-center justify-center">
-              <Image
-                src="/unifi/unifi-logo.png"
-                alt=""
-                width={78}
-                height={40}
-                className="h-auto w-full object-contain"
-              />
-            </FadeUp>
-            <FadeUp delay={0.08} className="max-w-4xl">
-              <h1 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl lg:text-[2.65rem] lg:leading-[1.12]">
-                The Unified Layer for Every ServiceNow Integration
-              </h1>
-            </FadeUp>
-            <FadeUp delay={0.16}>
-              <MotionLink
-                href="/contact"
-                whileHover={BUTTON_MOTION.whileHover}
-                whileTap={BUTTON_MOTION.whileTap}
-                transition={BUTTON_MOTION.transition}
-                className="mt-8 inline-flex items-center justify-center rounded-full bg-white px-7 py-3 text-sm font-semibold text-[#2D5BFF] shadow-sm transition-colors hover:bg-white/95"
-              >
-                Talk to a specialist
-              </MotionLink>
-            </FadeUp>
-          </div>
+      <section
+        className="relative overflow-hidden border-b border-white/10 text-white"
+        style={{ backgroundColor: HERO_NAVY }}
+      >
+        <GridStreakOverlay />
+        <div
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_70%_at_50%_0%,rgba(43,89,255,0.2),transparent_55%)]"
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute left-1/2 top-[42%] hidden h-[min(480px,65vh)] w-[min(380px,88vw)] -translate-x-1/2 -translate-y-1/2 opacity-[0.35] sm:block"
+          aria-hidden
+          style={{
+            backgroundImage: "url('/easyapi/dot-grid.png')",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            backgroundSize: "contain",
+          }}
+        />
+        <div
+          className="pointer-events-none absolute left-1/2 top-[42%] h-[min(420px,58vh)] w-[min(340px,92vw)] -translate-x-1/2 -translate-y-1/2 opacity-30 sm:hidden"
+          aria-hidden
+          style={{
+            backgroundImage: "url('/easyapi/dot-grid.png')",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            backgroundSize: "contain",
+          }}
+        />
 
-          <div className="relative mt-14 lg:mt-16">
-            <div className="pointer-events-none absolute inset-0 z-0 overflow-visible" aria-hidden>
-              <Image
-                src="/unifi/dots.svg"
-                alt=""
-                width={747}
-                height={508}
-                className="absolute left-1/2 top-[38%] h-auto w-[min(118vw,640px)] max-w-none -translate-x-1/2 -translate-y-1/2 sm:top-[40%] sm:w-[min(105vw,720px)] lg:top-[42%] lg:w-[min(92vw,820px)] xl:top-[44%] xl:w-[min(88vw,900px)]"
-              />
-            </div>
-
-            <div className="pointer-events-none absolute inset-0 z-[1] overflow-visible" aria-hidden>
-              <Image
-                src="/unifi/ring.svg"
-                alt=""
-                width={348}
-                height={338}
-                className="absolute -right-6 top-[-4%] h-auto w-[min(52vw,220px)] max-w-none sm:-right-10 sm:top-[-6%] sm:w-[min(48vw,260px)] lg:right-[2%] lg:top-[-8%] lg:w-[min(28vw,300px)] xl:right-[4%] xl:w-[320px]"
-              />
-              <Image
-                src="/unifi/ring.svg"
-                alt=""
-                width={348}
-                height={338}
-                className="absolute -left-10 bottom-[18%] h-auto w-[min(48vw,200px)] max-w-none sm:-left-6 sm:bottom-[14%] sm:w-[min(42vw,240px)] lg:-left-4 lg:bottom-[8%] lg:w-[min(24vw,280px)] xl:-left-2 xl:bottom-[6%] xl:w-[300px]"
-              />
-            </div>
-
-            <div className="relative z-[2] grid items-center gap-10 lg:grid-cols-12 lg:gap-6 xl:gap-8">
-            <FadeUp
-              delay={0.1}
-              className="relative order-2 flex w-full flex-col items-center gap-5 text-center lg:order-none lg:col-span-2 lg:items-start lg:text-left"
-            >
-              <div className="relative w-full max-w-[200px] lg:max-w-none">
+        <Container className="relative z-10 pt-12 pb-[9em] sm:pt-16 lg:pt-20">
+          <div className="relative mx-auto w-full max-w-4xl pb-6 sm:pb-8 lg:pb-10">
+            <div className="relative z-10 flex flex-col items-center text-center">
+              <FadeUp className="relative mb-6 inline-flex items-center justify-center">
                 <Image
-                  src="/unifi/arrows.svg"
+                  src="/unifi/unifi-logo.png"
                   alt=""
-                  width={270}
-                  height={267}
-                  className="absolute left-[80px] top-[-410px] z-10 h-auto max-w-[200px] object-contain"
+                  width={78}
+                  height={40}
+                  className="h-auto w-full object-contain"
                 />
-              </div>
-            </FadeUp>
+              </FadeUp>
+              <FadeUp delay={0.08} className="max-w-4xl">
+                <h1 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl lg:text-[2.65rem] lg:leading-[1.12]">
+                  The Unified Layer for Every ServiceNow Integration
+                </h1>
+              </FadeUp>
+              <FadeUp delay={0.16}>
+                <MotionLink
+                  href="/contact"
+                  whileHover={BUTTON_MOTION.whileHover}
+                  whileTap={BUTTON_MOTION.whileTap}
+                  transition={BUTTON_MOTION.transition}
+                  className="mt-8 inline-flex items-center justify-center rounded-full bg-white px-7 py-3 text-sm font-semibold text-[#2750F5] shadow-sm transition-colors hover:bg-white/95"
+                >
+                  Talk to a specialist
+                </MotionLink>
+              </FadeUp>
+            </div>
 
-            <FadeUp
-              delay={0.06}
-              className="order-1 w-full lg:order-none lg:col-span-8 lg:col-start-3"
+            <div
+              className="pointer-events-none absolute inset-0 -left-8 -right-8 z-0 overflow-visible sm:-left-12 sm:-right-12 lg:-left-20 lg:-right-20"
+              aria-hidden
             >
-              <div className="relative z-[2] overflow-hidden">
-                <Image
-                  src="/unifi/unifi-ui.png"
-                  alt="Unifi product interface showing integration diagnostics and settings"
-                  width={716}
-                  height={410}
-                  className="relative z-0 h-auto w-full rounded-[0.875rem] object-cover object-top"
-                  priority
-                />
-              </div>
-              <ul
-                role="list"
-                className="mt-6 flex w-full flex-col gap-4 sm:mt-7 sm:flex-row sm:flex-wrap sm:items-start sm:justify-center sm:gap-x-5 sm:gap-y-4 lg:mt-8 lg:flex-nowrap lg:gap-x-6 xl:gap-x-8"
-              >
-                {BULLETS.map((item, index) => (
-                  <li key={item.lead} className="min-w-0 sm:flex-1 sm:basis-[min(100%,16rem)] lg:basis-0">
-                    <FadeUp delay={0.12 + index * 0.06} className="flex gap-3 text-left">
-                      <Image
-                        src="/unifi/icon-check.svg"
-                        alt=""
-                        width={24}
-                        height={24}
-                        className="mt-0.5 h-6 w-6 shrink-0"
-                      />
-                      <p className="text-sm leading-relaxed text-white/95">
-                        <span className="font-semibold text-white">{item.lead}</span>
-                        {item.rest}
-                      </p>
-                    </FadeUp>
-                  </li>
-                ))}
-              </ul>
-            </FadeUp>
+              <Image
+                src="/unifi/ring.svg"
+                alt=""
+                width={348}
+                height={338}
+                className="absolute right-0 top-[6%] h-auto w-[min(52vw,220px)] max-w-none sm:top-[4%] sm:w-[min(48vw,260px)] lg:top-[2%] lg:w-[min(28vw,300px)] xl:w-[320px]"
+              />
+              <Image
+                src="/unifi/ring.svg"
+                alt=""
+                width={348}
+                height={338}
+                className="absolute left-0 top-[40%] h-auto w-[min(48vw,200px)] max-w-none sm:top-[38%] sm:w-[min(42vw,240px)] lg:top-[36%] lg:w-[min(24vw,280px)] xl:w-[300px]"
+              />
             </div>
           </div>
         </Container>
@@ -268,7 +234,7 @@ export function UnifiProductTemplate({ product }: Props) {
               <FadeUp delay={0.06}>
                 <h2
                   id="unifi-reality-heading"
-                  className="mt-3 text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl"
+                  className={cn(sectionHeadingH2, "mt-3 text-slate-900")}
                 >
                   Why most integrations become operational risk
                 </h2>
@@ -325,7 +291,7 @@ export function UnifiProductTemplate({ product }: Props) {
             <FadeUp delay={0.06}>
               <h2
                 id="unifi-capabilities-heading"
-                className="mt-3 text-balance text-3xl font-semibold tracking-tight sm:text-4xl"
+                className={cn(sectionHeadingH2, "mt-3 text-balance")}
               >
                 What Unifi enables
               </h2>
@@ -370,7 +336,7 @@ export function UnifiProductTemplate({ product }: Props) {
               <FadeUp delay={0.06}>
                 <h2
                   id="unifi-architecture-heading"
-                  className="mt-3 text-balance text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl"
+                  className={cn(sectionHeadingH2, "mt-3 text-balance text-slate-900")}
                 >
                   Built for the hardest pattern
                 </h2>
@@ -440,7 +406,7 @@ export function UnifiProductTemplate({ product }: Props) {
           <FadeUp className="relative z-[1] max-w-3xl">
             <h2
               id="unifi-framework-heading"
-              className="text-balance text-xl font-semibold tracking-tight sm:text-2xl lg:text-[2rem] lg:leading-[1.08]"
+              className={cn(sectionHeadingH2, "text-balance text-slate-900")}
             >
               Unifi is not a connector toolkit. It is an integration framework for long term stability.
             </h2>
@@ -453,7 +419,7 @@ export function UnifiProductTemplate({ product }: Props) {
           <div className="relative z-[1] grid gap-10">
             <div className="grid gap-8 lg:grid-cols-12 lg:gap-10">
               <FadeUp className="lg:col-span-4">
-                <h2 id="unifi-how-it-works-heading" className="text-balance text-3xl font-semibold tracking-tight text-slate-900">
+                <h2 id="unifi-how-it-works-heading" className={cn(sectionHeadingH2, "text-balance text-slate-900")}>
                   How Unifi Works
                 </h2>
                 <p className="mt-4 text-base leading-relaxed text-slate-600">
@@ -551,7 +517,7 @@ export function UnifiProductTemplate({ product }: Props) {
               <p className="text-xs font-bold uppercase tracking-wide text-white/80">Governance</p>
               <h2
                 id="unifi-governance-clarity-heading"
-                className="mt-3 text-balance text-3xl font-semibold tracking-tight sm:text-4xl lg:text-[3rem] lg:leading-[1.08]"
+                className={cn(sectionHeadingH2, "mt-3 text-balance")}
               >
                 Operational clarity embedded in every record
               </h2>
@@ -598,7 +564,7 @@ export function UnifiProductTemplate({ product }: Props) {
               <p className="text-xs font-bold uppercase tracking-wide text-[#2750F5]">Safety</p>
             </FadeUp>
             <FadeUp delay={0.06}>
-              <h2 id="unifi-safety-heading" className="mt-3 text-balance text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
+              <h2 id="unifi-safety-heading" className={cn(sectionHeadingH2, "mt-3 text-balance text-slate-900")}>
                 Safe change and controlled exchange
               </h2>
             </FadeUp>
@@ -642,7 +608,7 @@ export function UnifiProductTemplate({ product }: Props) {
               <p className="text-xs font-bold uppercase tracking-wide text-[#2750F5]">The right fit</p>
             </FadeUp>
             <FadeUp delay={0.06}>
-              <h2 id="unifi-right-fit-heading" className="mt-3 text-balance text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
+              <h2 id="unifi-right-fit-heading" className={cn(sectionHeadingH2, "mt-3 text-balance text-slate-900")}>
                 Where Unifi is the right choice
               </h2>
             </FadeUp>

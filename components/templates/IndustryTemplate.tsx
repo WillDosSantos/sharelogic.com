@@ -3,6 +3,8 @@ import { Container } from "@/components/layout/Container";
 import { Hero } from "@/components/sections/Hero";
 import { LinkButton } from "@/components/ui/LinkButton";
 import type { IndustryPageContent } from "@/lib/types/content";
+import { sectionHeadingH2 } from "@/lib/section-heading";
+import { cn } from "@/lib/utils/cn";
 
 type Props = {
   industry: IndustryPageContent;
@@ -19,7 +21,7 @@ export function IndustryTemplate({ industry }: Props) {
 
       <section className="border-t border-slate-200 bg-white">
         <Container className="py-12 sm:py-14">
-          <h2 className="text-2xl font-semibold tracking-tight text-slate-900">{industry.challenges.title}</h2>
+          <h2 className={cn(sectionHeadingH2, "text-slate-900")}>{industry.challenges.title}</h2>
           <ul className="mt-6 space-y-3">
             {industry.challenges.items.map((item) => (
               <li key={item} className="flex gap-2 text-sm text-slate-700">
@@ -33,7 +35,7 @@ export function IndustryTemplate({ industry }: Props) {
 
       <section className="border-t border-slate-200 bg-slate-50/60">
         <Container className="py-12 sm:py-14">
-          <h2 className="text-2xl font-semibold tracking-tight text-slate-900">{industry.howWeHelp.title}</h2>
+          <h2 className={cn(sectionHeadingH2, "text-slate-900")}>{industry.howWeHelp.title}</h2>
           <p className="mt-4 max-w-3xl text-pretty text-base leading-relaxed text-slate-600">
             {industry.howWeHelp.body}
           </p>
@@ -50,7 +52,7 @@ export function IndustryTemplate({ industry }: Props) {
 
       <section className="border-t border-slate-200 bg-white">
         <Container className="py-12 sm:py-14">
-          <h2 className="text-2xl font-semibold tracking-tight text-slate-900">Relevant use cases</h2>
+          <h2 className={cn(sectionHeadingH2, "text-slate-900")}>Relevant use cases</h2>
           <div className="mt-8 grid gap-6 md:grid-cols-3">
             {industry.useCases.map((u) => (
               <div key={u.title} className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">

@@ -15,6 +15,8 @@ import { GridStreakOverlay } from "@/components/effects/GridStreakOverlay";
 import { FadeUp } from "@/components/motion/FadeUp";
 import { LinkButton } from "@/components/ui/LinkButton";
 import { siteConfig } from "@/lib/data/site";
+import { sectionHeadingH2 } from "@/lib/section-heading";
+import { cn } from "@/lib/utils/cn";
 
 export const metadata = buildMetadata({
   title: `${siteConfig.name} — Enterprise integration & workflows`,
@@ -89,7 +91,7 @@ export default function HomePage() {
               </div>
             </FadeUp>
             <FadeUp delay={0.06} className="min-w-0 lg:flex-1">
-              <h2 id="section-3-heading" className="text-3xl font-semibold tracking-tight text-white">
+              <h2 id="section-3-heading" className={cn(sectionHeadingH2, "text-white")}>
                 The integration governance layer for ServiceNow
               </h2>
               <p className="mt-4 text-pretty text-base text-xl leading-relaxed text-white">

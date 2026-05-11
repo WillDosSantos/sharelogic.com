@@ -9,6 +9,8 @@ import { Container } from "@/components/layout/Container";
 import { GridStreakOverlay } from "@/components/effects/GridStreakOverlay";
 import { FadeUp } from "@/components/motion/FadeUp";
 import { BUTTON_MOTION } from "@/lib/motion/button";
+import { sectionHeadingH2 } from "@/lib/section-heading";
+import { cn } from "@/lib/utils/cn";
 import type { ProductPageContent } from "@/lib/types/content";
 
 const HERO_NAVY = "#2750F5";
@@ -157,7 +159,7 @@ export function EasyApiProductTemplate(_props: Props) {
                 <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#2750F5] text-lg font-semibold text-white" aria-hidden>
                   !
                 </span>
-                <h2 className="mt-6 text-3xl font-semibold tracking-tight sm:text-4xl">
+                <h2 className={cn(sectionHeadingH2, "mt-6")}>
                   Table APIs: Convenient, But Unmanaged
                 </h2>
                 <p className="mt-6 text-base leading-relaxed text-slate-600 sm:text-lg">
@@ -211,7 +213,7 @@ export function EasyApiProductTemplate(_props: Props) {
         />
         <Container className="relative z-10 py-14 sm:py-16 lg:py-20">
           <FadeUp className="mx-auto max-w-3xl text-center lg:mx-0 lg:max-w-none lg:text-left">
-            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl lg:text-[2.5rem] lg:leading-tight">
+            <h2 className={cn(sectionHeadingH2)}>
               A Controlled Way to Expose ServiceNow Data
             </h2>
             <p className="mt-4 text-lg text-slate-300 sm:text-xl">
@@ -259,7 +261,7 @@ export function EasyApiProductTemplate(_props: Props) {
         <div className="pointer-events-none absolute right-[39%] top-28 hidden h-7 w-7 rounded-full bg-white/85 md:block" aria-hidden />
         <Container className="relative z-10 py-16 sm:py-20 lg:py-24">
           <FadeUp className="max-w-3xl">
-            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">Control, Visibility and Governance</h2>
+            <h2 className={cn(sectionHeadingH2)}>Control, Visibility and Governance</h2>
             <p className="mt-4 text-lg leading-relaxed text-slate-800 sm:text-xl">
               Easy API provides the control and visibility needed to safely manage ServiceNow APIs as more integrations are needed.
             </p>
@@ -390,7 +392,7 @@ export function EasyApiProductTemplate(_props: Props) {
                 >
                   <BoxiconExpand size={22} className="shrink-0 text-white" />
                 </span>
-                <h2 className="mt-6 text-3xl font-semibold tracking-tight sm:text-4xl">Built for Scale</h2>
+                <h2 className={cn(sectionHeadingH2, "mt-6")}>Built for Scale</h2>
               </FadeUp>
               <div className="mt-8 flex flex-col gap-4">
                 {[
@@ -433,7 +435,7 @@ export function EasyApiProductTemplate(_props: Props) {
                 <path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z" fill="currentColor" />
               </svg>
             </span>
-            <h2 className="mt-6 text-3xl font-semibold tracking-tight sm:text-4xl">Automate API Provisioning</h2>
+            <h2 className={cn(sectionHeadingH2, "mt-6")}>Automate API Provisioning</h2>
           </FadeUp>
 
           <div className="mt-12 grid gap-4 md:grid-cols-3 md:gap-6">
@@ -466,7 +468,7 @@ export function EasyApiProductTemplate(_props: Props) {
         />
         <Container className="relative z-10 py-16 sm:py-20 lg:py-24">
           <FadeUp>
-            <h2 className="max-w-4xl text-3xl font-semibold tracking-tight sm:text-4xl lg:text-[2.5rem] lg:leading-tight">
+            <h2 className={cn(sectionHeadingH2, "max-w-4xl")}>
               Protect the Integrity of the Platform
             </h2>
           </FadeUp>
@@ -507,7 +509,7 @@ export function EasyApiProductTemplate(_props: Props) {
           <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
             <div>
               <FadeUp>
-                <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl lg:text-[2.5rem] lg:leading-tight">
+                <h2 className={cn(sectionHeadingH2)}>
                   Where Easy API Fits
                 </h2>
               </FadeUp>
@@ -568,7 +570,7 @@ export function EasyApiProductTemplate(_props: Props) {
         <Container className="relative z-10 py-20 sm:py-24 lg:py-28">
           <div className="mx-auto max-w-3xl text-center">
             <FadeUp>
-              <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
+              <h2 className={cn(sectionHeadingH2, "text-balance")}>
                 Take Control of Your ServiceNow APIs
               </h2>
               <p className="mt-5 text-pretty text-lg leading-relaxed text-slate-700 sm:text-xl">

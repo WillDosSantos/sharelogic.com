@@ -9,6 +9,7 @@ import { EmptyState } from "@/components/ui/EmptyState";
 import { Pagination } from "@/components/ui/Pagination";
 import type { NewsPost, NewsTopic } from "@/lib/types/content";
 import { newsTopics } from "@/lib/data/newsTopics";
+import { sectionHeadingH2 } from "@/lib/section-heading";
 import { cn } from "@/lib/utils/cn";
 
 const PAGE_SIZE = 6;
@@ -61,7 +62,7 @@ export function NewsHubClient({ posts, featured }: Props) {
               </div>
               <div className="flex flex-col justify-center p-8 lg:col-span-4">
                 <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Featured story</p>
-                <h2 className="mt-3 text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
+                <h2 className={cn(sectionHeadingH2, "mt-3 text-slate-900")}>
                   <Link href={`/news/${featured.slug}`} className="hover:underline">
                     {featured.title}
                   </Link>

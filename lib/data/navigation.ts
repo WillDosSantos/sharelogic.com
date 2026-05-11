@@ -31,6 +31,20 @@ export const mainNavigation: NavGroup[] = [
     href: "/resources/case-studies",
   },
   {
+    id: "support",
+    label: "Support",
+    children: [
+      {
+        label: "Documentation",
+        href: "https://sharelogic.atlassian.net/servicedesk/customer/portals",
+      },
+      {
+        label: "Support Portal",
+        href: "https://sharelogic.atlassian.net/servicedesk/customer/portals",
+      },
+    ],
+  },
+  {
     id: "company",
     label: "Company",
     children: [

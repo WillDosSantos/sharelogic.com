@@ -3,6 +3,8 @@ import { Container } from "@/components/layout/Container";
 import { Hero } from "@/components/sections/Hero";
 import { ContentCard } from "@/components/ui/ContentCard";
 import { siteConfig } from "@/lib/data/site";
+import { sectionHeadingH2 } from "@/lib/section-heading";
+import { cn } from "@/lib/utils/cn";
 import { buildMetadata } from "@/lib/utils/metadata";
 
 export const metadata = buildMetadata({
@@ -23,7 +25,7 @@ export default function ContactPage() {
         <Container className="py-12 sm:py-14">
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-7">
-              <h2 className="text-lg font-semibold text-slate-900">Send a message</h2>
+              <h2 className={cn(sectionHeadingH2, "text-slate-900")}>Send a message</h2>
               <p className="mt-2 text-sm leading-relaxed text-slate-600">
                 Fields are validated on the client. Wire this form to your CRM, email pipeline, or ticketing system when you’re ready.
               </p>
@@ -34,7 +36,7 @@ export default function ContactPage() {
 
             <aside className="lg:col-span-5">
               <div className="rounded-xl border border-slate-200 bg-slate-50/60 p-6">
-                <h2 className="text-lg font-semibold text-slate-900">Company</h2>
+                <h2 className={cn(sectionHeadingH2, "text-slate-900")}>Company</h2>
                 <p className="mt-3 text-sm leading-relaxed text-slate-600">
                   {siteConfig.legalName}
                   <br />

@@ -1,4 +1,5 @@
 import { Container } from "@/components/layout/Container";
+import { sectionHeadingH2 } from "@/lib/section-heading";
 import { cn } from "@/lib/utils/cn";
 
 type Props = {
@@ -13,7 +14,7 @@ export function NewsletterBlock({ title, description, className }: Props) {
       <Container className="py-12 sm:py-14">
         <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
           <div className="max-w-2xl">
-            <h2 className="text-lg font-semibold text-slate-900">{title}</h2>
+            <h2 className={cn(sectionHeadingH2, "text-slate-900")}>{title}</h2>
             <p className="mt-2 text-sm leading-relaxed text-slate-600">{description}</p>
           </div>
           <form className="mt-6 flex flex-col gap-3 sm:flex-row" aria-label="Newsletter signup">

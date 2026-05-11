@@ -3,6 +3,7 @@ import { Container } from "@/components/layout/Container";
 import { Hero } from "@/components/sections/Hero";
 import { LinkButton } from "@/components/ui/LinkButton";
 import type { IntegrationPageContent } from "@/lib/types/content";
+import { sectionHeadingH2 } from "@/lib/section-heading";
 import { cn } from "@/lib/utils/cn";
 
 type Props = {
@@ -20,7 +21,7 @@ export function IntegrationTemplate({ integration }: Props) {
 
       <section className="border-t border-slate-200 bg-white">
         <Container className="py-12 sm:py-14">
-          <h2 className="text-2xl font-semibold tracking-tight text-slate-900">
+          <h2 className={cn(sectionHeadingH2, "text-slate-900")}>
             {integration.businessProblem.title}
           </h2>
           <p className="mt-4 max-w-3xl text-pretty text-base leading-relaxed text-slate-600">
@@ -39,7 +40,7 @@ export function IntegrationTemplate({ integration }: Props) {
 
       <section className="border-t border-slate-200 bg-slate-50/60">
         <Container className="py-12 sm:py-14">
-          <h2 className="text-2xl font-semibold tracking-tight text-slate-900">Key capabilities</h2>
+          <h2 className={cn(sectionHeadingH2, "text-slate-900")}>Key capabilities</h2>
           <div className="mt-8 grid gap-6 md:grid-cols-3">
             {integration.capabilities.map((c) => (
               <div key={c.title} className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
@@ -53,7 +54,7 @@ export function IntegrationTemplate({ integration }: Props) {
 
       <section className="border-t border-slate-200 bg-white">
         <Container className="py-12 sm:py-14">
-          <h2 className="text-2xl font-semibold tracking-tight text-slate-900">{integration.workflow.title}</h2>
+          <h2 className={cn(sectionHeadingH2, "text-slate-900")}>{integration.workflow.title}</h2>
           <ol className="mt-8 space-y-4">
             {integration.workflow.steps.map((step, idx) => (
               <li key={step.title} className="rounded-xl border border-slate-200 bg-slate-50/60 p-6">
@@ -70,7 +71,7 @@ export function IntegrationTemplate({ integration }: Props) {
 
       <section className="border-t border-slate-200 bg-slate-50/60">
         <Container className="py-12 sm:py-14">
-          <h2 className="text-2xl font-semibold tracking-tight text-slate-900">{integration.outcomes.title}</h2>
+          <h2 className={cn(sectionHeadingH2, "text-slate-900")}>{integration.outcomes.title}</h2>
           <ul className="mt-6 space-y-3">
             {integration.outcomes.items.map((item) => (
               <li

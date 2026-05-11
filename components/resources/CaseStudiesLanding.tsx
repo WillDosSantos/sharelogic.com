@@ -5,6 +5,8 @@ import { Container } from "@/components/layout/Container";
 import { FadeUp } from "@/components/motion/FadeUp";
 import { getCaseStudyFeaturedImage, getCaseStudyStoryCopy } from "@/lib/data/caseStudies";
 import type { ResourceItem } from "@/lib/types/content";
+import { sectionHeadingH2 } from "@/lib/section-heading";
+import { cn } from "@/lib/utils/cn";
 
 type Props = {
   items: ResourceItem[];
@@ -76,7 +78,7 @@ export function CaseStudiesLanding({ items }: Props) {
                 <article key={item.id} id={`case-${item.slug}`} className="border-t border-slate-200 pt-10 sm:pt-12">
                   <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
                     <div className={imageLeft ? "lg:col-span-6 lg:order-2" : "lg:col-span-6"}>
-                      <h2 className="max-w-xl text-4xl font-semibold tracking-tight text-slate-950">{item.title}</h2>
+                      <h2 className={cn(sectionHeadingH2, "max-w-xl text-slate-950")}>{item.title}</h2>
                     </div>
                     <div className={imageLeft ? "lg:col-span-6 lg:order-1" : "lg:col-span-6"}>
                       <p className="text-lg leading-relaxed text-slate-600 sm:text-xl">{story.summary}</p>

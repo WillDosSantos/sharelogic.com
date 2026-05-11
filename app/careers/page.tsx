@@ -3,6 +3,8 @@ import { Container } from "@/components/layout/Container";
 import { Hero } from "@/components/sections/Hero";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { openRoles } from "@/lib/data/careers";
+import { sectionHeadingH2 } from "@/lib/section-heading";
+import { cn } from "@/lib/utils/cn";
 import { buildMetadata } from "@/lib/utils/metadata";
 
 export const metadata = buildMetadata({
@@ -22,7 +24,7 @@ export default function CareersPage() {
 
       <section className="border-t border-slate-200 bg-white">
         <Container className="py-12 sm:py-14">
-          <h2 className="text-2xl font-semibold tracking-tight text-slate-900">How we work</h2>
+          <h2 className={cn(sectionHeadingH2, "text-slate-900")}>How we work</h2>
           <div className="mt-6 grid gap-6 md:grid-cols-3">
             <div className="rounded-xl border border-slate-200 bg-slate-50/60 p-6">
               <h3 className="text-base font-semibold text-slate-900">Ownership</h3>
@@ -48,7 +50,7 @@ export default function CareersPage() {
 
       <section className="border-t border-slate-200 bg-slate-50/60">
         <Container className="py-12 sm:py-14">
-          <h2 className="text-2xl font-semibold tracking-tight text-slate-900">Open roles</h2>
+          <h2 className={cn(sectionHeadingH2, "text-slate-900")}>Open roles</h2>
           <p className="mt-4 max-w-3xl text-sm leading-relaxed text-slate-600">
             These listings are mock data for the starter. Replace with your ATS links when ready.
           </p>

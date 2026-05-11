@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/layout/Container";
+import { sectionHeadingH2 } from "@/lib/section-heading";
+import { cn } from "@/lib/utils/cn";
 
 const CARDS = [
   {
@@ -41,7 +43,7 @@ export function HomeSection7Documentation() {
 
       <Container className="relative z-10 py-12 sm:py-14 lg:py-16">
         <p className="inline-flex rounded-md bg-[#2750F5] px-2.5 py-1 text-xs font-semibold text-white">Features</p>
-        <h2 id="section-7-heading" className="mt-4 text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
+        <h2 id="section-7-heading" className={cn(sectionHeadingH2, "mt-4 text-slate-900")}>
           Documentation
         </h2>
         <p className="mt-4 max-w-3xl text-pretty text-base leading-relaxed text-slate-600">

@@ -1,6 +1,6 @@
-import Image from "next/image";
-import Link from "next/link";
 import { Container } from "@/components/layout/Container";
+import { sectionHeadingH2 } from "@/lib/section-heading";
+import { cn } from "@/lib/utils/cn";
 
 export function HomeSection6Products() {
   return (
@@ -22,7 +22,7 @@ export function HomeSection6Products() {
       <Container className="relative z-10 py-12 sm:py-24 lg:py-32">
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-8 xl:gap-10">
           <div className="min-w-0 max-w-sm lg:pr-2 flex w-full">
-            <h2 id="section-6-heading" className="text-2xl font-semibold tracking-tight text-slate-900 sm:text-[1.65rem]">
+            <h2 id="section-6-heading" className={cn(sectionHeadingH2, "text-slate-900")}>
               The same standards, applied where you need them
             </h2>
           </div>
