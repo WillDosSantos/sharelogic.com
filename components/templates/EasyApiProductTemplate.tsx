@@ -144,38 +144,70 @@ export function EasyApiProductTemplate(_props: Props) {
               </FadeUp>
             </div>
 
-            {/* Right: orange circular arrow illustration */}
+            {/* Right: hero illustration */}
             <FadeUp delay={0.1} className="hidden lg:flex lg:items-center lg:justify-center">
-              <svg
-                viewBox="0 0 480 480"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-auto w-full max-w-[420px]"
-                aria-hidden
-              >
-                {/* Light grey rounded card background */}
-                <rect x="60" y="60" width="340" height="340" rx="80" fill="#F1F5F9" />
+              <div className="relative h-[480px] w-full max-w-[580px]" aria-hidden>
 
-                {/* Dashed circular path */}
-                <circle
-                  cx="240"
-                  cy="240"
-                  r="160"
-                  stroke="#F59E0B"
-                  strokeWidth="2.5"
-                  strokeDasharray="10 8"
-                  strokeLinecap="round"
-                />
+                {/* Orange circular arrows — behind everything */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <Image
+                    src="/easyapi/hero/hero-arrows.svg"
+                    alt=""
+                    width={520}
+                    height={520}
+                    className="h-auto w-[90%]"
+                  />
+                </div>
 
-                {/* Arrow at top-right (~45°) */}
-                <polygon points="370,106 380,122 358,118" fill="#F59E0B" />
+                {/* Main graph card — centred */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.96 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
+                  className="absolute left-[4%] top-[12%]"
+                >
+                  <Image
+                    src="/easyapi/hero/hero-modal-graph.svg"
+                    alt="API request graph"
+                    width={535}
+                    height={296}
+                    className="h-auto w-full drop-shadow-2xl"
+                  />
+                </motion.div>
 
-                {/* Arrow at bottom-right (~135°) */}
-                <polygon points="374,374 356,370 368,354" fill="#F59E0B" />
+                {/* KPI: Errors — top right */}
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5, duration: 0.5, ease: "easeOut" }}
+                  className="absolute right-[-20px] bottom-[5%]"
+                >
+                  <Image
+                    src="/easyapi/hero/KPI-Errors.svg"
+                    alt="Errors KPI"
+                    width={280}
+                    height={120}
+                    className="h-auto w-full drop-shadow-xl"
+                  />
+                </motion.div>
 
-                {/* Arrow at bottom-left (~225°) */}
-                <polygon points="106,374 110,356 126,368" fill="#F59E0B" />
-              </svg>
+                {/* KPI: Inbound Requests — bottom left */}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.65, duration: 0.5, ease: "easeOut" }}
+                  className="absolute top-[2%] left-0"
+                >
+                  <Image
+                    src="/easyapi/hero/KPI-Inbound requests.svg"
+                    alt="Inbound Requests KPI"
+                    width={280}
+                    height={120}
+                    className="h-auto w-full drop-shadow-xl"
+                  />
+                </motion.div>
+
+              </div>
             </FadeUp>
           </div>
         </Container>
