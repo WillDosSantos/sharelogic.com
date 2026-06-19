@@ -216,33 +216,46 @@ export function UnifiProductTemplate({ product }: Props) {
       {/* ── Trusted by ── */}
       <section className="border-b border-slate-100 bg-white" aria-labelledby="unifi-trusted-heading">
         <Container className="py-10 sm:py-12">
-          <div className="flex flex-col items-center gap-6 sm:flex-row sm:gap-10">
-            <p id="unifi-trusted-heading" className="shrink-0 text-sm font-semibold text-slate-900">
-              Trusted by over 70<br className="hidden sm:block" /> companies
-            </p>
-            <div className="h-px w-full bg-slate-200 sm:hidden" />
-            <div className="w-px self-stretch bg-slate-200 hidden sm:block" />
-            <ul className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 lg:gap-10">
-              {[
-                { src: "/logos/BT.png", alt: "BT" },
-                { src: "/logos/CDW.png", alt: "CDW" },
-                { src: "/logos/MOJ.png", alt: "MOJ" },
-                { src: "/logos/NTT.png", alt: "NTT" },
-                { src: "/logos/SKF.png", alt: "SKF" },
-                { src: "/logos/advania.png", alt: "Advania" },
-                { src: "/logos/husqvarna.png", alt: "Husqvarna" },
-              ].map(({ src, alt }) => (
-                <li key={src} className="flex items-center justify-center">
-                  <Image
-                    src={src}
-                    alt={alt}
-                    width={120}
-                    height={40}
-                    className="h-8 w-auto max-w-[100px] object-contain grayscale opacity-60 transition-opacity hover:opacity-100 hover:grayscale-0"
-                  />
-                </li>
-              ))}
-            </ul>
+          <div className="flex items-center gap-8">
+            <div className="shrink-0 flex items-center gap-8">
+              <p id="unifi-trusted-heading" className="shrink-0 text-sm font-semibold text-slate-900 leading-snug">
+                Trusted by over 70<br className="hidden sm:block" /> companies
+              </p>
+              <div className="hidden sm:block w-px self-stretch bg-slate-200" />
+            </div>
+
+            <div className="relative min-w-0 flex-1 overflow-hidden">
+              <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-white to-transparent" />
+              <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-white to-transparent" />
+
+              <div
+                className="flex items-center"
+                style={{ animation: "marquee 30s linear infinite", willChange: "transform" }}
+              >
+                {[1, 2].map((copy) => (
+                  <div key={copy} className="flex shrink-0 items-center gap-14 pr-14">
+                    {[
+                      { src: "/logos/BT.png", alt: "BT" },
+                      { src: "/logos/CDW.png", alt: "CDW" },
+                      { src: "/logos/MOJ.png", alt: "MOJ" },
+                      { src: "/logos/NTT.png", alt: "NTT" },
+                      { src: "/logos/SKF.png", alt: "SKF" },
+                      { src: "/logos/advania.png", alt: "Advania" },
+                      { src: "/logos/husqvarna.png", alt: "Husqvarna" },
+                    ].map(({ src, alt }) => (
+                      <Image
+                        key={`${copy}-${src}`}
+                        src={src}
+                        alt={alt}
+                        width={120}
+                        height={40}
+                        className="h-8 w-auto max-w-[110px] shrink-0 object-contain grayscale opacity-50"
+                      />
+                    ))}
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </Container>
       </section>
@@ -647,26 +660,26 @@ export function UnifiProductTemplate({ product }: Props) {
       <section className="relative overflow-hidden text-slate-900 py-20 sm:py-24 lg:py-28">
         <div className="absolute inset-x-0 top-0 h-1 bg-[#2750F5]" aria-hidden />
 
-        <Container className="relative z-10 py-20 sm:py-24 lg:py-28">
-          {/* Left decoration */}
-          <div className="pointer-events-none absolute left-4 top-1/2 hidden -translate-y-1/2 md:block lg:left-8" aria-hidden>
-            <div className="relative h-64 w-64">
-              <div className="absolute inset-0 rounded-full border border-dashed border-[#cfd6ec]" />
-              <div className="absolute inset-10 rounded-full border border-dashed border-[#cfd6ec]" />
-              <div className="absolute bottom-4 left-16 h-12 w-12 rotate-45 rounded-lg bg-[#c8c4f7]" />
-              <div className="absolute bottom-20 left-20 h-5 w-5 rotate-45 rounded bg-[#c8c4f7]" />
-            </div>
+        {/* Left decoration — z-0 so it sits behind the form */}
+        <div className="pointer-events-none absolute left-[10%] top-1/2 z-0 hidden -translate-y-1/2 md:block xl:left-[14%]" aria-hidden>
+          <div className="relative h-64 w-64">
+            <div className="absolute inset-0 rounded-full border border-dashed border-[#cfd6ec]" />
+            <div className="absolute inset-10 rounded-full border border-dashed border-[#cfd6ec]" />
+            <div className="absolute bottom-4 left-16 h-12 w-12 rotate-45 rounded-lg bg-[#c8c4f7]" />
+            <div className="absolute bottom-20 left-20 h-5 w-5 rotate-45 rounded bg-[#c8c4f7]" />
           </div>
-          {/* Right decoration */}
-          <div className="pointer-events-none absolute right-4 top-8 hidden md:block lg:right-8" aria-hidden>
-            <div className="relative h-64 w-64">
-              <div className="absolute inset-0 rounded-full border border-dashed border-[#cfd6ec]" />
-              <div className="absolute inset-10 rounded-full border border-dashed border-[#cfd6ec]" />
-              <div className="absolute right-12 top-2 h-12 w-12 rotate-45 rounded-lg bg-[#c8c4f7]" />
-              <div className="absolute right-4 top-16 h-5 w-5 rotate-45 rounded bg-[#c8c4f7]" />
-            </div>
+        </div>
+        {/* Right decoration — z-0 so it sits behind the form */}
+        <div className="pointer-events-none absolute right-[10%] top-1/2 z-0 hidden -translate-y-1/2 md:block xl:right-[14%]" aria-hidden>
+          <div className="relative h-64 w-64">
+            <div className="absolute inset-0 rounded-full border border-dashed border-[#cfd6ec]" />
+            <div className="absolute inset-10 rounded-full border border-dashed border-[#cfd6ec]" />
+            <div className="absolute right-12 top-2 h-12 w-12 rotate-45 rounded-lg bg-[#c8c4f7]" />
+            <div className="absolute right-4 top-16 h-5 w-5 rotate-45 rounded bg-[#c8c4f7]" />
           </div>
+        </div>
 
+        <Container className="relative z-10 py-20 sm:py-24 lg:py-28">
           <div className="mx-auto max-w-3xl text-center">
             <FadeUp>
               <h2 className={cn(sectionHeadingH2, "text-balance")}>

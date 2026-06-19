@@ -227,33 +227,49 @@ export function EasyApiProductTemplate(_props: Props) {
       {/* ── Trusted by ── */}
       <section className="border-b border-slate-100 bg-white" aria-labelledby="easyapi-trusted-heading">
         <Container className="py-10 sm:py-12">
-          <div className="flex flex-col items-center gap-6 sm:flex-row sm:gap-10">
-            <p id="easyapi-trusted-heading" className="shrink-0 text-sm font-semibold text-slate-900">
-              Trusted by over 70<br className="hidden sm:block" /> companies
-            </p>
-            <div className="h-px w-full bg-slate-200 sm:hidden" />
-            <div className="w-px self-stretch bg-slate-200 hidden sm:block" />
-            <ul className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 lg:gap-10">
-              {[
-                { src: "/logos/BT.png", alt: "BT" },
-                { src: "/logos/CDW.png", alt: "CDW" },
-                { src: "/logos/MOJ.png", alt: "MOJ" },
-                { src: "/logos/NTT.png", alt: "NTT" },
-                { src: "/logos/SKF.png", alt: "SKF" },
-                { src: "/logos/advania.png", alt: "Advania" },
-                { src: "/logos/husqvarna.png", alt: "Husqvarna" },
-              ].map(({ src, alt }) => (
-                <li key={src} className="flex items-center justify-center">
-                  <Image
-                    src={src}
-                    alt={alt}
-                    width={120}
-                    height={40}
-                    className="h-8 w-auto max-w-[100px] object-contain grayscale opacity-60 transition-opacity hover:opacity-100 hover:grayscale-0"
-                  />
-                </li>
-              ))}
-            </ul>
+          <div className="flex items-center gap-8">
+            {/* Label + divider — fixed */}
+            <div className="shrink-0 flex items-center gap-8">
+              <p id="easyapi-trusted-heading" className="shrink-0 text-sm font-semibold text-slate-900 leading-snug">
+                Trusted by over 70<br className="hidden sm:block" /> companies
+              </p>
+              <div className="hidden sm:block w-px self-stretch bg-slate-200" />
+            </div>
+
+            {/* Marquee — clips within the remaining container width */}
+            <div className="relative min-w-0 flex-1 overflow-hidden">
+              <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-white to-transparent" />
+              <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-white to-transparent" />
+
+              {/* Two identical sets side-by-side; translate -50% = one full set = seamless */}
+              <div
+                className="flex items-center"
+                style={{ animation: "marquee 30s linear infinite", willChange: "transform" }}
+              >
+                {[1, 2].map((copy) => (
+                  <div key={copy} className="flex shrink-0 items-center gap-14 pr-14">
+                    {[
+                      { src: "/logos/BT.png", alt: "BT" },
+                      { src: "/logos/CDW.png", alt: "CDW" },
+                      { src: "/logos/MOJ.png", alt: "MOJ" },
+                      { src: "/logos/NTT.png", alt: "NTT" },
+                      { src: "/logos/SKF.png", alt: "SKF" },
+                      { src: "/logos/advania.png", alt: "Advania" },
+                      { src: "/logos/husqvarna.png", alt: "Husqvarna" },
+                    ].map(({ src, alt }) => (
+                      <Image
+                        key={`${copy}-${src}`}
+                        src={src}
+                        alt={alt}
+                        width={120}
+                        height={40}
+                        className="h-8 w-auto max-w-[110px] shrink-0 object-contain grayscale opacity-50"
+                      />
+                    ))}
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </Container>
       </section>
