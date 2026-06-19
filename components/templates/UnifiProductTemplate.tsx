@@ -62,6 +62,16 @@ export function UnifiProductTemplate({ product }: Props) {
     <>
       {/* ── Hero ── */}
       <section className="relative overflow-hidden border-b border-slate-100 bg-white">
+        {/* Dot-grid background */}
+        <div className="pointer-events-none absolute inset-y-0 right-[400px] flex items-center" aria-hidden>
+          <Image
+            src="/unifi/dot-grid.svg"
+            alt=""
+            width={688}
+            height={515}
+            className="h-auto w-[688px] max-w-none opacity-60"
+          />
+        </div>
         <Container className="relative z-10 py-16 sm:py-20 lg:py-24">
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-8">
 
@@ -80,14 +90,14 @@ export function UnifiProductTemplate({ product }: Props) {
 
               <FadeUp delay={0.08}>
                 <h1 className="text-balance text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-[3.25rem] lg:leading-[1.08]">
-                  The Unified Layer for Every ServiceNow Integration
+                  Take the risk out of eBonding with Unifi
                 </h1>
               </FadeUp>
 
               <FadeUp delay={0.14}>
                 <p className="mt-6 max-w-xl text-pretty text-base leading-relaxed text-slate-500 sm:text-lg">
-                  Enterprise integrations rarely fail on day one. They become liabilities over time.
-                  Unifi gives you the governance, visibility, and stability to keep them reliable — long term.
+                  Unifi delivers the control, visibility, and stability needed for
+                  robust enterprise integrations in ServiceNow.
                 </p>
               </FadeUp>
 
@@ -108,8 +118,9 @@ export function UnifiProductTemplate({ product }: Props) {
                   whileTap={BUTTON_MOTION.whileTap}
                   transition={BUTTON_MOTION.transition}
                   className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-transparent px-8 py-3 text-sm font-semibold text-slate-800 transition-colors hover:bg-slate-50"
+                  style={{ color: HERO_NAVY }}
                 >
-                  See How It Works
+                  Architecture Overview
                 </MotionLink>
               </FadeUp>
 
@@ -123,13 +134,13 @@ export function UnifiProductTemplate({ product }: Props) {
                         <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z" fill="currentColor" stroke="none"/>
                       </svg>
                     )},
-                    { label: "How It Works", href: "#how-it-works", icon: (
+                    { label: "Pricing", href: "#pricing", icon: (
                       <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4" stroke="currentColor" strokeWidth={2}>
                         <circle cx="12" cy="12" r="10"/>
-                        <path d="M12 8v4l3 3" strokeLinecap="round"/>
+                        <path d="M12 6v12M9 9.5c0-1.1.9-2 2-2h2a2 2 0 0 1 0 4h-2a2 2 0 0 0 0 4h2a2 2 0 0 0 2-2" strokeLinecap="round"/>
                       </svg>
                     )},
-                    { label: "FAQs", href: "#faqs", icon: (
+                    { label: "Support", href: "#faqs", icon: (
                       <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4" stroke="currentColor" strokeWidth={2}>
                         <circle cx="12" cy="12" r="10"/>
                         <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" strokeLinecap="round"/>
@@ -155,26 +166,48 @@ export function UnifiProductTemplate({ product }: Props) {
               </FadeUp>
             </div>
 
-            {/* Right: ring illustration */}
+            {/* Right: hero illustration */}
             <FadeUp delay={0.1} className="hidden lg:flex lg:items-center lg:justify-center">
-              <div className="relative flex h-[420px] w-full max-w-[420px] items-center justify-center">
-                <div className="absolute inset-0 rounded-[4rem] bg-slate-50" />
+              <div className="relative h-[480px] w-full max-w-[560px]" aria-hidden>
+                {/* Dot-grid background */}
                 <Image
-                  src="/unifi/ring.svg"
+                  src="/unifi/background-ui.svg"
                   alt=""
-                  width={300}
-                  height={300}
-                  className="relative z-10 h-auto w-[220px]"
-                  aria-hidden
+                  fill
+                  className="object-contain object-center"
                 />
-                <Image
-                  src="/unifi/ring.svg"
-                  alt=""
-                  width={160}
-                  height={160}
-                  className="absolute right-12 top-10 z-10 h-auto w-[120px] opacity-60"
-                  aria-hidden
-                />
+      
+                {/* card-CMDB — top left */}
+                <motion.div
+                  initial={{ opacity: 0, y: -12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.35, duration: 0.6, ease: "easeOut" }}
+                  className="absolute left-0 top-[10%] w-[46%]"
+                >
+                  <Image
+                    src="/unifi/card-CMDB.svg"
+                    alt="CMDB integration card"
+                    width={280}
+                    height={160}
+                    className="h-auto w-full drop-shadow-xl"
+                  />
+                </motion.div>
+
+                {/* card-Problem — bottom right */}
+                <motion.div
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5, duration: 0.6, ease: "easeOut" }}
+                  className="absolute bottom-[8%] right-0 w-[48%]"
+                >
+                  <Image
+                    src="/unifi/card-Problem.svg"
+                    alt="Problem management card"
+                    width={280}
+                    height={160}
+                    className="h-auto w-full drop-shadow-xl"
+                  />
+                </motion.div>
               </div>
             </FadeUp>
           </div>
