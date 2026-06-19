@@ -159,12 +159,23 @@ export function EasyApiProductTemplate(_props: Props) {
                   />
                 </div>
 
+                {/* Orange square backdrop — behind cards, in front of arrows */}
+                <div className="absolute right-0 left-[10%] top-[-40px] z-[1]">
+                  <Image
+                    src="/easyapi/hero/hero-easyapi-square.png"
+                    alt=""
+                    width={420}
+                    height={420}
+                    className="h-auto w-[90%] rounded-2xl"
+                  />
+                </div>
+
                 {/* Main graph card — centred */}
                 <motion.div
                   initial={{ opacity: 0, scale: 0.96 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
-                  className="absolute left-[4%] top-[12%]"
+                  className="absolute left-[4%] top-[12%] z-[2]"
                 >
                   <Image
                     src="/easyapi/hero/hero-modal-graph.svg"
@@ -180,7 +191,7 @@ export function EasyApiProductTemplate(_props: Props) {
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5, duration: 0.5, ease: "easeOut" }}
-                  className="absolute right-[-20px] bottom-[5%]"
+                  className="absolute right-[-20px] bottom-[5%] z-[3]"
                 >
                   <Image
                     src="/easyapi/hero/KPI-Errors.svg"
@@ -196,7 +207,7 @@ export function EasyApiProductTemplate(_props: Props) {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.65, duration: 0.5, ease: "easeOut" }}
-                  className="absolute top-[2%] left-0"
+                  className="absolute top-[2%] left-0 z-[3]"
                 >
                   <Image
                     src="/easyapi/hero/KPI-Inbound requests.svg"

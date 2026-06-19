@@ -5,15 +5,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { GridStreakOverlay } from "@/components/effects/GridStreakOverlay";
-import { CtaBand } from "@/components/sections/CtaBand";
 import { Container } from "@/components/layout/Container";
 import { FadeUp } from "@/components/motion/FadeUp";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { BUTTON_MOTION } from "@/lib/motion/button";
 import { sectionHeadingH2 } from "@/lib/section-heading";
 import { cn } from "@/lib/utils/cn";
-import { HomeSectionFollow } from "@/components/home/HomeSectionFollow";
 import type { ProductPageContent } from "@/lib/types/content";
+
+const MotionLink = motion(Link);
 
 const HERO_NAVY = "#2750F5";
 const HERO_BG = "#2D5BFF";
@@ -51,7 +51,6 @@ const CAPABILITY_CARDS = [
   },
 ];
 
-const MotionLink = motion.create(Link);
 
 type Props = {
   product: ProductPageContent;
@@ -645,14 +644,62 @@ export function UnifiProductTemplate({ product }: Props) {
         );
       })()}
 
-      <HomeSectionFollow />
+      <section className="relative overflow-hidden text-slate-900 py-20 sm:py-24 lg:py-28">
+        <div className="absolute inset-x-0 top-0 h-1 bg-[#2750F5]" aria-hidden />
 
-      <CtaBand
-        headline={product.cta.headline}
-        body={product.cta.body}
-        primaryLabel={product.cta.primaryLabel}
-        primaryHref={product.cta.primaryHref}
-      />
+        <Container className="relative z-10 py-20 sm:py-24 lg:py-28">
+          {/* Left decoration */}
+          <div className="pointer-events-none absolute left-4 top-1/2 hidden -translate-y-1/2 md:block lg:left-8" aria-hidden>
+            <div className="relative h-64 w-64">
+              <div className="absolute inset-0 rounded-full border border-dashed border-[#cfd6ec]" />
+              <div className="absolute inset-10 rounded-full border border-dashed border-[#cfd6ec]" />
+              <div className="absolute bottom-4 left-16 h-12 w-12 rotate-45 rounded-lg bg-[#c8c4f7]" />
+              <div className="absolute bottom-20 left-20 h-5 w-5 rotate-45 rounded bg-[#c8c4f7]" />
+            </div>
+          </div>
+          {/* Right decoration */}
+          <div className="pointer-events-none absolute right-4 top-8 hidden md:block lg:right-8" aria-hidden>
+            <div className="relative h-64 w-64">
+              <div className="absolute inset-0 rounded-full border border-dashed border-[#cfd6ec]" />
+              <div className="absolute inset-10 rounded-full border border-dashed border-[#cfd6ec]" />
+              <div className="absolute right-12 top-2 h-12 w-12 rotate-45 rounded-lg bg-[#c8c4f7]" />
+              <div className="absolute right-4 top-16 h-5 w-5 rotate-45 rounded bg-[#c8c4f7]" />
+            </div>
+          </div>
+
+          <div className="mx-auto max-w-3xl text-center">
+            <FadeUp>
+              <h2 className={cn(sectionHeadingH2, "text-balance")}>
+                Ready to fix your integrations?
+              </h2>
+              <p className="mt-5 text-pretty text-lg leading-relaxed text-slate-700 sm:text-xl">
+                Let&apos;s address the visibility, control, and security issues once and for all.
+              </p>
+            </FadeUp>
+            <FadeUp delay={0.12} className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
+              <MotionLink
+                href="/contact"
+                whileHover={BUTTON_MOTION.whileHover}
+                whileTap={BUTTON_MOTION.whileTap}
+                transition={BUTTON_MOTION.transition}
+                className="inline-flex w-full min-w-[200px] items-center justify-center rounded-full px-8 py-3.5 text-sm font-semibold text-white shadow-lg transition-opacity hover:opacity-95 sm:w-auto"
+                style={{ backgroundColor: HERO_NAVY }}
+              >
+                Speak to an Integration Specialist
+              </MotionLink>
+              <MotionLink
+                href="#how-it-works"
+                whileHover={BUTTON_MOTION.whileHover}
+                whileTap={BUTTON_MOTION.whileTap}
+                transition={BUTTON_MOTION.transition}
+                className="inline-flex w-full min-w-[200px] items-center justify-center rounded-full border border-[#8ea2eb] bg-white px-8 py-3.5 text-sm font-semibold text-[#2750F5] shadow-sm transition-colors hover:bg-slate-50 sm:w-auto"
+              >
+                View Architecture Overview
+              </MotionLink>
+            </FadeUp>
+          </div>
+        </Container>
+      </section>
     </>
   );
 }
