@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import type { ComponentType, SVGProps } from "react";
 import { BoxiconExpand, BoxiconLayer, BoxiconServer, BoxiconShield } from "@/components/icons/IntegrityPlatformColumnIcons";
 import { Container } from "@/components/layout/Container";
@@ -43,6 +43,39 @@ const INTEGRITY_PLATFORM_COLUMNS: {
 type Props = {
   product: ProductPageContent;
 };
+
+function DashboardChart() {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, amount: 0.3 });
+  return (
+    <div ref={ref} className="relative overflow-hidden rounded-2xl border border-slate-200/60 shadow-xl">
+      <Image
+        src="/easyapi/dashboard-img.svg"
+        alt="Easy API dashboard showing request volume, errors, and performance metrics"
+        width={1200}
+        height={900}
+        className="h-auto w-full object-cover object-top"
+        unoptimized
+      />
+      <svg
+        viewBox="0 0 1440 1024"
+        className="pointer-events-none absolute inset-0 h-full w-full"
+        aria-hidden
+      >
+        <polyline
+          points="114.291,420.043 170.286,437.045 225.087,305.599 282.887,420.557 338.472,450.12 393.775,437.025 451.284,454.044 506.508,422.136 562.968,419.996 619.63,465.216 674.808,454.022 730.892,448.001 787.106,454.01 842.053,229.727 899.969,437.732 954.087,305.599 1011.63,350.216 1067.92,488.594 1123.34,437.252 1180.07,441.007 1235.08,305.599 1292.93,456.604 1348.13,463.013 1403.12,363.523"
+          fill="none"
+          stroke="#FF6B35"
+          strokeWidth="2"
+          strokeLinejoin="round"
+          strokeDasharray="6000"
+          strokeDashoffset={inView ? 0 : 6000}
+          style={{ transition: inView ? "stroke-dashoffset 2s ease-in-out 0.3s" : "none" }}
+        />
+      </svg>
+    </div>
+  );
+}
 
 export function EasyApiProductTemplate(_props: Props) {
   const MotionLink = motion.create(Link);
@@ -287,16 +320,7 @@ export function EasyApiProductTemplate(_props: Props) {
           </ScrollReveal>
 
           <ScrollReveal direction="up" delay={0.12} className="mx-auto mt-12 max-w-4xl">
-            <div className="overflow-hidden rounded-2xl border border-slate-200/60 shadow-xl">
-              <Image
-                src="/easyapi/dashboard-img.png"
-                alt="Easy API dashboard showing request volume, errors, and performance metrics"
-                width={1200}
-                height={900}
-                className="h-auto w-full object-cover object-top"
-                unoptimized
-              />
-            </div>
+            <DashboardChart />
           </ScrollReveal>
         </Container>
       </section>
@@ -376,7 +400,7 @@ export function EasyApiProductTemplate(_props: Props) {
         const SLIDES = [
           {
             text: "Instead of integrations connecting directly through out-of-box Table APIs, APIs are created and managed through Easy API.",
-            src: "/easyapi/dashboard-img.png",
+            src: "/easyapi/dashboard-img.svg",
             alt: "Easy API dashboard showing request volume, errors, and performance metrics",
           },
           {

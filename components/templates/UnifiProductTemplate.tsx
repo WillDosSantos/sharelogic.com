@@ -21,33 +21,27 @@ const HERO_BG = "#2D5BFF";
 const CAPABILITY_CARDS = [
   {
     icon: "/unifi/icons/building-08.svg",
-    title: "Governance embedded by design",
-    description: "Complete message history, payload inspection, and transformation visibility — all directly within the ServiceNow record context.",
-  },
-  {
-    icon: "/unifi/icons/arrow-up-right.svg",
-    title: "Upgrade & Change Confidence",
-    description: "Built-in regression testing ensures your eBonding integrations remain reliable as APIs, processes, and ServiceNow versions evolve.",
-  },
-  {
-    icon: "/unifi/icons/shield-tick.svg",
-    title: "Native ServiceNow Security",
-    description: "Fully native to ServiceNow with no middleware or third-party infrastructure, keeping your data secure and compliant.",
-  },
-  {
-    icon: "/unifi/icons/code-02.svg",
-    title: "Pro-Code Power at Enterprise Scale",
-    description: "Handles complex logic, advanced transformations, and edge cases common in large-scale eBonding environments.",
-  },
-  {
-    icon: "/unifi/icons/dataflow-03.svg",
-    title: "Multi-System Integration",
-    description: "Seamlessly eBond one ServiceNow record with multiple external systems while maintaining full state integrity and traceability.",
+    title: "Mission-Critical Operations",
+    description: "Agents and operations staff can see integration activity, replay messages, and resolve issues without needing specialist help.",
+    tagline: "Empowering the whole team, not just developers.",
   },
   {
     icon: "/unifi/icons/refresh-ccw-04.svg",
-    title: "Long-Term Stability",
-    description: "Purpose-built to keep your integrations governed, visible, and reliable as your ecosystem grows.",
+    title: "Reliable Messaging",
+    description: "Robust asynchronous integration with real-time monitoring and delivery assurance, so your most important messages always arrive.",
+    tagline: "Guaranteed delivery for business-critical flows.",
+  },
+  {
+    icon: "/unifi/icons/arrow-up-right.svg",
+    title: "Automated Testing",
+    description: "Quickly create and run automated regression tests to ensure your integrations remain reliable after every update.",
+    tagline: "Never fear an upgrade again.",
+  },
+  {
+    icon: "/unifi/icons/code-02.svg",
+    title: "Delightful Development",
+    description: "Build integrations faster with Unifi Integration Designer. Even complex requirements like asynchronous messaging become simple.",
+    tagline: "Low-code to pro-code flexibility.",
   },
 ];
 
@@ -168,14 +162,13 @@ export function UnifiProductTemplate({ product }: Props) {
             {/* Right: hero illustration */}
             <FadeUp delay={0.1} className="hidden lg:flex lg:items-center lg:justify-center">
               <div className="relative h-[480px] w-full max-w-[560px]" aria-hidden>
-                {/* Dot-grid background */}
                 <Image
                   src="/unifi/background-ui.svg"
                   alt=""
                   fill
                   className="object-contain object-center"
                 />
-      
+
                 {/* card-CMDB — top left */}
                 <motion.div
                   initial={{ opacity: 0, y: -12 }}
@@ -265,19 +258,18 @@ export function UnifiProductTemplate({ product }: Props) {
         <Container className="py-14 sm:py-16 lg:py-20">
           <ScrollReveal direction="up" className="mx-auto max-w-2xl text-center">
             <h2 className={cn(sectionHeadingH2, "text-slate-900")}>
-              Why most integrations become an operational risk
+            Manage all your integrations in a single place.
             </h2>
             <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
-              Integrations rarely blow up on day one. They become liabilities over time —
-              as APIs change, upgrades shift behaviour, and processes evolve without governance.
+            Unifi makes it easy to handle your most difficult, business-critical integrations with confidence and control.
             </p>
           </ScrollReveal>
 
           <ScrollReveal direction="up" delay={0.12} className="mx-auto mt-12 max-w-4xl">
             <div className="overflow-hidden rounded-2xl border border-slate-200/60 shadow-xl">
               <Image
-                src="/unifi/unifi-ui.png"
-                alt="Unifi dashboard showing monitored integration flow and diagnostics"
+                src="/unifi/message-fields.svg"
+                alt="Unifi message fields configuration"
                 width={1200}
                 height={700}
                 className="h-auto w-full object-cover object-top"
@@ -292,14 +284,11 @@ export function UnifiProductTemplate({ product }: Props) {
         <Container className="py-16 sm:py-20 lg:py-24">
           <ScrollReveal direction="up" className="mx-auto max-w-2xl text-center mb-12">
             <h2 className={cn(sectionHeadingH2, "text-slate-900")}>
-              Take the risk out of eBonding with Unifi
+              Connect ServiceNow to Anything
             </h2>
-            <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
-              Unifi delivers the control, visibility, and stability needed for robust enterprise integrations in ServiceNow.
-            </p>
           </ScrollReveal>
-          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-            {CAPABILITY_CARDS.map(({ icon, title, description }, i) => (
+          <div className="grid gap-10 sm:grid-cols-2">
+            {CAPABILITY_CARDS.map(({ icon, title, description, tagline }, i) => (
               <ScrollReveal key={title} direction="up" delay={i * 0.08} className="flex flex-col">
                 <span
                   className="inline-flex h-12 w-12 items-center justify-center rounded-full text-white"
@@ -310,165 +299,72 @@ export function UnifiProductTemplate({ product }: Props) {
                 </span>
                 <h3 className="mt-5 text-base font-bold text-slate-900">{title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-slate-600">{description}</p>
+                <p className="mt-3 text-sm font-semibold text-[#2750F5]">{tagline}</p>
               </ScrollReveal>
             ))}
           </div>
         </Container>
       </section>
 
-      {/* ── Testimonial ── */}
-      <section style={{ backgroundColor: HERO_NAVY }}>
-        <Container className="py-20 sm:py-24 lg:py-28">
-          <FadeUp className="mx-auto flex max-w-3xl flex-col items-center text-center">
-            <Image
-              src="/quote.svg"
-              alt=""
-              width={48}
-              height={48}
-              className="mb-8 h-12 w-auto"
-              aria-hidden
-            />
-            <blockquote className="text-lg font-medium leading-relaxed text-white sm:text-xl lg:text-2xl">
-              Unifi has fundamentally changed how we approach eBonding. What used to take weeks to debug
-              now takes minutes — the visibility into every message and transformation inside ServiceNow
-              is unlike anything else we&apos;ve used.
-            </blockquote>
-            <figcaption className="mt-8">
-              <p className="text-xl font-bold text-white">Tim Attenborough</p>
-              <p className="mt-1 text-xs font-semibold uppercase tracking-widest text-white/60">
-                CTO, ShareLogic
-              </p>
-            </figcaption>
-          </FadeUp>
-        </Container>
-      </section>
-
-      {/* ── How it Works + Governance — blue accordion container ── */}
+      {/* ── Testimonial carousel ── */}
       {(() => {
-        function AccordionRow({ label, body }: { label: string; body: string }) {
-          const [open, setOpen] = useState(false);
-          return (
-            <div className="border-t border-white/20 last:border-b last:border-white/20">
-              <button
-                onClick={() => setOpen((o) => !o)}
-                className="flex w-full items-center justify-between gap-4 py-4 text-left"
-                aria-expanded={open}
-              >
-                <span className="text-base font-medium text-white">{label}</span>
-                <motion.span
-                  animate={{ rotate: open ? 45 : 0 }}
-                  transition={{ duration: 0.2, ease: "easeInOut" }}
-                  className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-white/40 text-white"
-                  aria-hidden
-                >
-                  <svg viewBox="0 0 16 16" fill="none" className="h-3 w-3" stroke="currentColor" strokeWidth={2}>
-                    <line x1="8" y1="2" x2="8" y2="14" />
-                    <line x1="2" y1="8" x2="14" y2="8" />
-                  </svg>
-                </motion.span>
-              </button>
-              <AnimatePresence initial={false}>
-                {open && (
-                  <motion.div
-                    key="body"
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.28, ease: "easeInOut" }}
-                    className="overflow-hidden"
-                  >
-                    <p className="pb-5 text-sm leading-relaxed text-white/75">{body}</p>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          );
-        }
-
+        const QUOTES = [
+          {
+            quote: "It used to take us three to four months to deliver integrations with our customers' ticketing systems. With Unifi, we can complete them in days or even hours...",
+            name: "Gary",
+            role: "British Telecommunications PLC",
+          },
+          {
+            quote: "As one of our customers told us, 'This is a system built on experience, by people who really know integrations.'",
+            name: "Daniel Billing",
+            role: "Founder and Solutions Architect, ProCori",
+          },
+          {
+            quote: "ShareLogic's continuous refinement of the backend of the platform frees us to focus on our core business requirements rather than worry about the technology.",
+            name: "Fernando Caamaño, Vice President",
+            role: "Systems Design, NTT Managed Cloud & Infrastructure Services",
+          },
+        ];
+        const [active, setActive] = useState(0);
         return (
-          <section id="how-it-works" className="border-b border-slate-200 bg-white py-16 sm:py-20 lg:py-24">
-            <Container>
-              <div
-                className="overflow-hidden p-8 sm:p-12 lg:p-16"
-                style={{
-                  backgroundColor: HERO_NAVY,
-                  borderRadius: "4rem 0 4rem 0",
-                }}
-              >
-                {/* Block 1: image left, accordion right */}
-                <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-                  <ScrollReveal direction="right">
-                    <div className="overflow-hidden rounded-2xl bg-[#0d1524] shadow-lg">
-                      <Image
-                        src="/unifi/unifi-ui.png"
-                        alt="Unifi integration monitoring view"
-                        width={1200}
-                        height={700}
-                        className="h-auto w-full object-cover object-top"
-                      />
-                    </div>
-                  </ScrollReveal>
-                  <ScrollReveal direction="left" delay={0.1}>
-                    <h2 className={cn(sectionHeadingH2, "text-white")}>
-                      How Unifi Works
-                    </h2>
-                    <p className="mt-3 text-base text-white/70">
-                      Unifi introduces a governed control layer that standardizes how integrations operate across every ServiceNow environment.
-                    </p>
-                    <div className="mt-8">
-                      <AccordionRow
-                        label="Mission-Critical Operations"
-                        body="Agents and operations staff can see integration activity, replay messages, and resolve issues without needing specialist help — empowering the whole team, not just developers."
-                      />
-                      <AccordionRow
-                        label="Reliable Messaging"
-                        body="Robust asynchronous integration with real-time monitoring and delivery assurance, so your most important messages always arrive. Guaranteed delivery for business-critical flows."
-                      />
-                      <AccordionRow
-                        label="Automated Testing"
-                        body="Quickly create and run automated regression tests to ensure your integrations remain reliable after every update. Never fear an upgrade again."
-                      />
-                    </div>
-                  </ScrollReveal>
+          <section style={{ backgroundColor: HERO_NAVY }}>
+            <Container className="py-20 sm:py-24 lg:py-28">
+              <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
+                <Image src="/quote.svg" alt="" width={48} height={48} className="mb-8 h-12 w-auto" aria-hidden />
+
+                <div className="relative min-h-[200px] w-full">
+                  <AnimatePresence mode="wait">
+                    <motion.figure
+                      key={active}
+                      initial={{ opacity: 0, y: 12 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -12 }}
+                      transition={{ duration: 0.35, ease: "easeInOut" }}
+                      className="flex flex-col items-center text-center"
+                    >
+                      <blockquote className="text-lg font-medium leading-relaxed text-white sm:text-xl lg:text-2xl">
+                        &ldquo;{QUOTES[active].quote}&rdquo;
+                      </blockquote>
+                      <figcaption className="mt-8">
+                        <p className="text-xl font-bold text-white">{QUOTES[active].name}</p>
+                        <p className="mt-1 text-xs font-semibold uppercase tracking-widest text-white/60">
+                          {QUOTES[active].role}
+                        </p>
+                      </figcaption>
+                    </motion.figure>
+                  </AnimatePresence>
                 </div>
 
-                <div className="my-32 lg:my-48" />
-
-                {/* Block 2: accordion left, image right */}
-                <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-                  <ScrollReveal direction="right">
-                    <h2 className={cn(sectionHeadingH2, "text-white")}>
-                      Operational Clarity at Every Level
-                    </h2>
-                    <p className="mt-3 text-base text-white/70">
-                      Most tools give you logs. Unifi gives you real operational clarity — embedded in every ServiceNow record.
-                    </p>
-                    <div className="mt-8">
-                      <AccordionRow
-                        label="Governance embedded in every record"
-                        body="From any integrated record, instantly see what was sent, received, how it was transformed, and where failures occurred — without switching systems or reconciling logs."
-                      />
-                      <AccordionRow
-                        label="Native ServiceNow security model"
-                        body="Because Unifi runs natively inside ServiceNow, it automatically inherits the platform's security model, audit controls, and access governance. No extra layers. No added risk."
-                      />
-                      <AccordionRow
-                        label="Delightful Development"
-                        body="Build integrations faster with Unifi Integration Designer. Even complex requirements like asynchronous messaging become simple — low-code to pro-code flexibility."
-                      />
-                    </div>
-                  </ScrollReveal>
-                  <ScrollReveal direction="left" delay={0.1}>
-                    <div className="overflow-hidden rounded-2xl bg-[#0d1524] shadow-lg">
-                      <Image
-                        src="/unifi/ui-example.png"
-                        alt="Unifi integration designer interface"
-                        width={1234}
-                        height={700}
-                        className="h-auto w-full object-cover object-top"
-                      />
-                    </div>
-                  </ScrollReveal>
+                {/* Dot indicators */}
+                <div className="mt-10 flex items-center gap-2">
+                  {QUOTES.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setActive(i)}
+                      aria-label={`Quote ${i + 1}`}
+                      className={`h-2 rounded-full transition-all duration-300 ${i === active ? "w-6 bg-white" : "w-2 bg-white/30 hover:bg-white/60"}`}
+                    />
+                  ))}
                 </div>
               </div>
             </Container>
@@ -476,22 +372,24 @@ export function UnifiProductTemplate({ product }: Props) {
         );
       })()}
 
-      {/* ── Built for scale / Architecture ── */}
+      {/* ── Designed for eBonding ── */}
       <section className="border-b border-slate-100 bg-white">
         <Container className="py-16 sm:py-20 lg:py-24">
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
             <ScrollReveal direction="right" className="flex flex-col">
-              <p className="text-2xl font-bold text-slate-400 leading-snug">Designed for eBonding</p>
+              <p className="text-sm font-semibold uppercase tracking-widest text-slate-400 mb-3">Designed for eBonding</p>
               <h2 className={cn(sectionHeadingH2, "text-slate-900 mt-0")}>
-                Designed for eBonding
+                Unifi makes it easy to handle your most difficult, business-critical integrations
               </h2>
               <p className="mt-6 text-base leading-relaxed text-slate-600">
+                While Unifi can handle many integration types, eBonding is where it truly excels.
+              </p>
+              <p className="mt-4 text-base leading-relaxed text-slate-600">
                 eBonding is one of the toughest integration challenges. It requires bi-directional sync,
                 complex state management, strict SLA alignment, and long-term reliability.
               </p>
               <p className="mt-4 text-base leading-relaxed text-slate-600">
-                Most platforms struggle here. Unifi was purpose-built for it — giving platform owners
-                clear visibility into what systems are connected and how they interact with the platform.
+                Most platforms struggle here. This is what Unifi was designed for.
               </p>
             </ScrollReveal>
 
@@ -513,7 +411,7 @@ export function UnifiProductTemplate({ product }: Props) {
                 />
                 <Image
                   src="/unifi/pattern-section/UI.svg"
-                  alt="Architecture flow between systems for eBonding"
+                  alt="eBonding architecture diagram"
                   width={566}
                   height={349}
                   className="relative z-[2] h-auto w-full"
@@ -523,6 +421,129 @@ export function UnifiProductTemplate({ product }: Props) {
           </div>
         </Container>
       </section>
+
+      {/* ── How it Works + Governance — blue feature list container ── */}
+      {(() => {
+        function FeatureList({ items }: { items: string[] }) {
+          return (
+            <ul className="mt-8 space-y-0">
+              {items.map((item) => (
+                <li key={item} className="flex items-center gap-3 border-t border-white/15 py-3 text-sm font-medium text-white/80">
+                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white/10">
+                    <svg viewBox="0 0 12 12" fill="none" className="h-3 w-3" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="2,6 5,9 10,3" />
+                    </svg>
+                  </span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          );
+        }
+
+        return (
+          <section id="how-it-works" className="border-b border-slate-200 bg-white py-16 sm:py-20 lg:py-24">
+            <Container>
+              <div
+                className="overflow-hidden p-8 sm:p-12 lg:p-16"
+                style={{
+                  backgroundColor: HERO_NAVY,
+                  borderRadius: "4rem 0 4rem 0",
+                }}
+              >
+                {/* Block 1: image left, feature list right */}
+                <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+                  <ScrollReveal direction="right">
+                    <div className="overflow-hidden rounded-2xl bg-[#0d1524] shadow-lg">
+                      <Image
+                        src="/unifi/documentation.png"
+                        alt="Unifi Integration Designer"
+                        width={1200}
+                        height={700}
+                        className="h-auto w-full object-cover object-top"
+                      />
+                    </div>
+                  </ScrollReveal>
+                  <ScrollReveal direction="left" delay={0.1}>
+                    <p className="text-xs font-semibold uppercase tracking-widest text-white/50 mb-3">Delightful Development</p>
+                    <h2 className={cn(sectionHeadingH2, "text-white")}>
+                      Build better integrations with Integration Designer
+                    </h2>
+                    <FeatureList items={[
+                      "Integrations",
+                      "Messages and Fields",
+                      "Pollers",
+                      "Datasets",
+                      "Multi-system integration",
+                      "Pro-code Power at Enterprise Scale",
+                    ]} />
+                  </ScrollReveal>
+                </div>
+
+                <div className="my-32 lg:my-48" />
+
+                {/* Block 2: feature list left, image right */}
+                <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+                  <ScrollReveal direction="right">
+                    <p className="text-xs font-semibold uppercase tracking-widest text-white/50 mb-3">Mission-critical Operations</p>
+                    <h2 className={cn(sectionHeadingH2, "text-white")}>
+                      Guaranteed delivery for business critical flows.
+                    </h2>
+                    <FeatureList items={[
+                      "Real-time monitoring",
+                      "Operational visibility",
+                      "Disaster recovery",
+                      "Governance embedded by design",
+                      "Native ServiceNow Security",
+                      "Long-Term Stability",
+                    ]} />
+                  </ScrollReveal>
+                  <ScrollReveal direction="left" delay={0.1}>
+                    <div className="overflow-hidden rounded-2xl bg-[#0d1524] shadow-lg">
+                      <Image
+                        src="/unifi/dash-templates.png"
+                        alt="Unifi dashboard templates"
+                        width={1234}
+                        height={700}
+                        className="h-auto w-full object-cover object-top"
+                      />
+                    </div>
+                  </ScrollReveal>
+                </div>
+
+                <div className="my-32 lg:my-48" />
+
+                {/* Block 3: image left, feature list right */}
+                <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+                  <ScrollReveal direction="right">
+                    <div className="overflow-hidden rounded-2xl bg-[#0d1524] shadow-lg">
+                      <Image
+                        src="/unifi/message-fields.png"
+                        alt="Unifi automated testing"
+                        width={1200}
+                        height={700}
+                        className="h-auto w-full object-cover object-top"
+                      />
+                    </div>
+                  </ScrollReveal>
+                  <ScrollReveal direction="left" delay={0.1}>
+                    <p className="text-xs font-semibold uppercase tracking-widest text-white/50 mb-3">Automated Testing</p>
+                    <h2 className={cn(sectionHeadingH2, "text-white")}>
+                      Never fear an upgrade again.
+                    </h2>
+                    <FeatureList items={[
+                      "Upgrade & Change Confidence",
+                      "Create tests from real data with one click",
+                      "Dedicated Test Assistant portal",
+                      "Full internal end-to-end testing",
+                    ]} />
+                  </ScrollReveal>
+                </div>
+              </div>
+            </Container>
+          </section>
+        );
+      })()}
 
       {/* ── Where Unifi is the right choice ── */}
       <section className="border-b border-slate-100 bg-[#F0F2F8]">
