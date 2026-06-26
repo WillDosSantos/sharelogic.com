@@ -704,10 +704,10 @@ export function UnifiProductTemplate({ product }: Props) {
           <div className="mx-auto max-w-3xl text-center">
             <FadeUp>
               <h2 className={cn(sectionHeadingH2, "text-balance")}>
-                Ready to fix your integrations?
+                Let&apos;s Talk About Your Integrations
               </h2>
               <p className="mt-5 text-pretty text-lg leading-relaxed text-slate-700 sm:text-xl">
-                Let&apos;s address the visibility, control, and security issues once and for all.
+                If integration stability, governance and long-term scalability matter in your environment, Unifi is designed for that reality.
               </p>
             </FadeUp>
             <FadeUp delay={0.12} className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
@@ -720,15 +720,6 @@ export function UnifiProductTemplate({ product }: Props) {
                 style={{ backgroundColor: HERO_NAVY }}
               >
                 Speak to an Integration Specialist
-              </MotionLink>
-              <MotionLink
-                href="#how-it-works"
-                whileHover={BUTTON_MOTION.whileHover}
-                whileTap={BUTTON_MOTION.whileTap}
-                transition={BUTTON_MOTION.transition}
-                className="inline-flex w-full min-w-[200px] items-center justify-center rounded-full border border-[#8ea2eb] bg-white px-8 py-3.5 text-sm font-semibold text-[#2750F5] shadow-sm transition-colors hover:bg-slate-50 sm:w-auto"
-              >
-                View Architecture Overview
               </MotionLink>
             </FadeUp>
           </div>

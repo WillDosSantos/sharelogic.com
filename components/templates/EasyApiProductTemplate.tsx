@@ -70,7 +70,7 @@ function DashboardChart() {
           strokeLinejoin="round"
           strokeDasharray="6000"
           strokeDashoffset={inView ? 0 : 6000}
-          style={{ transition: inView ? "stroke-dashoffset 2s ease-in-out 0.3s" : "none" }}
+          style={{ transition: inView ? "stroke-dashoffset 3.5s ease-in-out 0.3s" : "none" }}
         />
       </svg>
     </div>
