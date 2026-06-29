@@ -524,15 +524,16 @@ export function EasyApiProductTemplate(_props: Props) {
 
         return (
           <section className="border-b border-slate-200 bg-white py-16 sm:py-20 lg:py-24">
-            <Container>
+            <div className="px-4 sm:px-6">
               {/* Blue rounded container — radius top-left & bottom-right only */}
               <div
-                className="overflow-hidden p-8 sm:p-12 lg:p-16"
+                className="overflow-hidden px-8 py-12 sm:px-12 sm:py-16 lg:px-20 lg:py-20"
                 style={{
                   backgroundColor: HERO_NAVY,
                   borderRadius: "4rem 0 4rem 0",
                 }}
               >
+                <div className="mx-auto max-w-[1350px]">
                 {/* Block 1: image left, accordion right */}
                 <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
                   <ScrollReveal direction="right">
@@ -604,8 +605,9 @@ export function EasyApiProductTemplate(_props: Props) {
                     </div>
                   </ScrollReveal>
                 </div>
+                </div>
               </div>
-            </Container>
+            </div>
           </section>
         );
       })()}
