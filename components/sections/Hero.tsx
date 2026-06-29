@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import Image from "next/image";
 import { FadeUp } from "@/components/motion/FadeUp";
 import { Container } from "@/components/layout/Container";
+import { GridStreakOverlay } from "@/components/effects/GridStreakOverlay";
 import { cn } from "@/lib/utils/cn";
 
 type Props = {
@@ -44,6 +45,7 @@ export function Hero({ title, subtitle, children, className, visual, showBackgro
             priority
           />
         </div>
+        <GridStreakOverlay />
         {showBackgroundDots ? (
           <>
             <div className="absolute inset-y-0 left-0 z-[1] w-1/2">

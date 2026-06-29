@@ -269,12 +269,9 @@ export function EasyApiProductTemplate(_props: Props) {
               <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-white to-transparent" />
 
               {/* Two identical sets side-by-side; translate -50% = one full set = seamless */}
-              <div
-                className="flex items-center"
-                style={{ animation: "marquee 30s linear infinite", willChange: "transform" }}
-              >
-                {[1, 2].map((copy) => (
-                  <div key={copy} className="flex shrink-0 items-center gap-14 pr-14">
+              <div className="flex w-max" style={{ animation: "marquee 30s linear infinite", willChange: "transform" }}>
+                {[0, 1].map((copy) => (
+                  <div key={copy} className="flex shrink-0 items-center gap-14 px-7">
                     {[
                       { src: "/logos/BT.png", alt: "BT" },
                       { src: "/logos/CDW.png", alt: "CDW" },
