@@ -179,7 +179,7 @@ export function EasyApiProductTemplate(_props: Props) {
 
             {/* Right: hero illustration */}
             <FadeUp delay={0.1} className="hidden lg:flex lg:items-center lg:justify-center">
-              <div className="relative h-[480px] w-full max-w-[580px]" aria-hidden>
+              <div className="relative h-[624px] w-full max-w-[754px]" aria-hidden>
 
                 {/* Orange circular arrows — behind everything */}
                 <div className="absolute inset-0 flex items-center justify-center">
