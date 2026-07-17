@@ -259,7 +259,7 @@ export function UnifiProductTemplate({ product }: Props) {
           <ScrollReveal direction="up" delay={0.12} className="mx-auto mt-12 max-w-4xl">
             <div className="overflow-hidden rounded-2xl border border-slate-200/60 shadow-xl">
               <Image
-                src="/unifi/message-fields.svg"
+                src="/unifi/messages.png"
                 alt="Unifi message fields configuration"
                 width={1200}
                 height={700}
