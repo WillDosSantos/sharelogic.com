@@ -609,10 +609,6 @@ export function EasyApiProductTemplate(_props: Props) {
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
             {/* Left: copy */}
             <ScrollReveal direction="right" className="flex flex-col">
-              <p className="text-2xl font-bold text-slate-400 leading-snug">Built for scale</p>
-              <h2 className={cn(sectionHeadingH2, "text-slate-900 mt-0")}>
-                Built for scale
-              </h2>
               <p className="mt-6 text-base leading-relaxed text-slate-600">
                 What begins as a handful of integrations can quickly expand into dozens or hundreds
                 of systems interacting with the platform. Without a structured approach, managing
