@@ -6,7 +6,7 @@ import { FadeUp } from "@/components/motion/FadeUp";
  */
 export function HomeHeroArtboard() {
   return (
-    <FadeUp delay={0.1} className="relative mx-auto w-full min-w-0 min-w-[850px]" aria-hidden>
+    <FadeUp delay={0.1} className="relative mx-auto w-full min-w-0 min-w-[850px] -translate-x-[85px]" aria-hidden>
       <Image
         src="/home/hero/home-hero-product.svg"
         alt=""
