@@ -75,7 +75,7 @@ export function Hero({ title, subtitle, children, className, visual, showBackgro
           </>
         ) : null}
       </div>
-      <Container className="relative z-10 w-full py-16 sm:py-20 lg:py-24 xl:py-28">
+      <Container className="relative z-10 w-full py-4">
         {visual ? (
           <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-10 xl:gap-12">
             <FadeUp className="w-full min-w-0 lg:w-[45%]">{copy}</FadeUp>
