@@ -78,7 +78,7 @@ Smart ones see them as critical to building trust and delivering exceptional cus
         <Container className="py-12 sm:py-14">
           <div className="relative z-10 flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-12 xl:gap-16">
             <FadeUp className="flex min-w-0 shrink-0 justify-center lg:w-[46%] lg:justify-start">
-              <div className="relative w-full max-w-[403px]">
+              <div className="relative w-full max-w-[590px]">
                 <Image
                   src="/home/home-sec-2.svg"
                   alt=""
