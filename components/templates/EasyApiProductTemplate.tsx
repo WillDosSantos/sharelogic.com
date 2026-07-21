@@ -639,6 +639,40 @@ export function EasyApiProductTemplate(_props: Props) {
       </section>
 
 
+      {/* ── More you can do with Easy API ── */}
+      <section className="border-b border-slate-100 bg-[#F0F2F8]">
+        <Container className="py-16 sm:py-20 lg:py-24">
+          <ScrollReveal direction="up" className="mx-auto max-w-2xl text-center mb-14">
+            <h2 className={cn(sectionHeadingH2, "text-slate-900")}>
+              More you can do with Easy API
+            </h2>
+          </ScrollReveal>
+
+          <div className="grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {[
+              { icon: "/unifi/icons/arrow-up-right.svg", title: "API Versioning" },
+              { icon: "/unifi/icons/code-02.svg", title: "Auto-generated Docs" },
+              { icon: "/unifi/icons/refresh-ccw-04.svg", title: "Rate Limiting" },
+              { icon: "/unifi/icons/building-08.svg", title: "Connection Management" },
+              { icon: "/unifi/icons/arrow-up-right.svg", title: "Request Logging" },
+              { icon: "/unifi/icons/code-02.svg", title: "Schema Validation" },
+              { icon: "/unifi/icons/refresh-ccw-04.svg", title: "Role-based Access" },
+              { icon: "/unifi/icons/building-08.svg", title: "Multi-environment Support" },
+            ].map(({ icon, title }, i) => (
+              <ScrollReveal key={title} direction="up" delay={i * 0.05}>
+                <div className="flex flex-col">
+                  <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-full bg-[#2750F5]">
+                    <Image src={icon} alt="" width={20} height={20} className="h-5 w-5 brightness-0 invert" />
+                  </div>
+                  <h3 className="text-base font-bold text-slate-900">{title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </Container>
+      </section>
+
       {/* ── FAQ ── */}
       {(() => {
         const FAQS = [
