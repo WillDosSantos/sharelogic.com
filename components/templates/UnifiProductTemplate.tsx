@@ -690,7 +690,7 @@ export function UnifiProductTemplate({ product }: Props) {
         <div className="absolute inset-x-0 top-0 h-1 bg-[#2750F5]" aria-hidden />
 
         {/* Left decoration — z-0 so it sits behind the form */}
-        <div className="pointer-events-none absolute left-[10%] top-1/2 z-0 hidden -translate-y-1/2 md:block xl:left-[14%]" aria-hidden>
+        <div className="pointer-events-none absolute top-1/2 z-0 hidden -translate-y-1/2 xl:block" style={{ left: 'calc(50% - 384px - 40px - 256px)' }} aria-hidden>
           <div className="relative h-64 w-64">
             <div className="absolute inset-0 rounded-full border border-dashed border-[#cfd6ec]" />
             <div className="absolute inset-10 rounded-full border border-dashed border-[#cfd6ec]" />
@@ -699,7 +699,7 @@ export function UnifiProductTemplate({ product }: Props) {
           </div>
         </div>
         {/* Right decoration — z-0 so it sits behind the form */}
-        <div className="pointer-events-none absolute right-[10%] top-1/2 z-0 hidden -translate-y-1/2 md:block xl:right-[14%]" aria-hidden>
+        <div className="pointer-events-none absolute top-1/2 z-0 hidden -translate-y-1/2 xl:block" style={{ right: 'calc(50% - 384px - 40px - 256px)' }} aria-hidden>
           <div className="relative h-64 w-64">
             <div className="absolute inset-0 rounded-full border border-dashed border-[#cfd6ec]" />
             <div className="absolute inset-10 rounded-full border border-dashed border-[#cfd6ec]" />
