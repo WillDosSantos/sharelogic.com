@@ -363,7 +363,7 @@ export function EasyApiProductTemplate(_props: Props) {
             />
             <blockquote className="text-lg font-medium leading-relaxed text-white sm:text-xl lg:text-2xl">
               ServiceNow is an incredibly secure platform and it makes extensive use of highly
-              configurable ACLs. The difficulty with these ACLs is the complexity across the
+              configurable ACLs. The difficulty with these ACLs it the complexity across the
               platform, and this is where Easy API comes in. Easy API removes this complexity
               with a highly configurable, simple integration manager.
             </blockquote>
