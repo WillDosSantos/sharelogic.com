@@ -124,15 +124,6 @@ export function EasyApiProductTemplate(_props: Props) {
                 >
                   Start Free Trial
                 </MotionLink>
-                <MotionLink
-                  href="#features"
-                  whileHover={BUTTON_MOTION.whileHover}
-                  whileTap={BUTTON_MOTION.whileTap}
-                  transition={BUTTON_MOTION.transition}
-                  className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-transparent px-8 py-3 text-sm font-semibold text-slate-800 transition-colors hover:bg-slate-50"
-                >
-                  See How It Works
-                </MotionLink>
               </FadeUp>
 
               {/* Jump to nav */}
@@ -816,7 +807,7 @@ export function EasyApiProductTemplate(_props: Props) {
                 transition={BUTTON_MOTION.transition}
                 className="inline-flex w-full min-w-[200px] items-center justify-center rounded-full border border-[#8ea2eb] bg-white px-8 py-3.5 text-sm font-semibold text-[#2750F5] shadow-sm transition-colors hover:bg-slate-50 sm:w-auto"
               >
-                See How It Works
+                Talk to a Specialist
               </MotionLink>
             </FadeUp>
           </div>

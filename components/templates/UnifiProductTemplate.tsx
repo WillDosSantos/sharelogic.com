@@ -96,14 +96,14 @@ export function UnifiProductTemplate({ product }: Props) {
 
               <FadeUp delay={0.2} className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <MotionLink
-                  href="/contact"
+                  href="https://store.servicenow.com/store/app/998963221b246a50a85b16db234bcb51"
                   whileHover={BUTTON_MOTION.whileHover}
                   whileTap={BUTTON_MOTION.whileTap}
                   transition={BUTTON_MOTION.transition}
                   className="inline-flex items-center justify-center rounded-full px-8 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:opacity-90"
                   style={{ backgroundColor: HERO_NAVY }}
                 >
-                  Talk to a Specialist
+                  Start free trial
                 </MotionLink>
                 <MotionLink
                   href="#how-it-works"
