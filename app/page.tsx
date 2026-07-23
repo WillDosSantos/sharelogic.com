@@ -79,13 +79,12 @@ Smart ones see them as critical to building trust and delivering exceptional cus
             <FadeUp className="flex min-w-0 shrink-0 justify-center lg:w-[46%] lg:justify-start">
               <div className="relative w-full max-w-[590px]">
                 <Image
-                  src="/home/home-sec-2.svg"
+                  src="/hero-illustration.png"
                   alt=""
                   width={809}
                   height={740}
                   className="h-auto w-full object-contain object-left"
                   sizes="(max-width: 1024px) 100vw, 46vw"
-                  unoptimized
                   loading="lazy"
                 />
               </div>
