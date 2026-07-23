@@ -103,8 +103,6 @@ export function SiteFooter() {
           </p>
           <div className="flex flex-wrap gap-x-4 gap-y-2">
             <a href="/privacy-policy" className="text-white/55 hover:text-white transition-colors">Privacy Policy</a>
-            <span className="text-white/55">Terms placeholder</span>
-            <span className="text-white/55">Security placeholder</span>
           </div>
         </div>
       </Container>
